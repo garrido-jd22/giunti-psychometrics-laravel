@@ -1,11 +1,6 @@
-// ==========================================================================
 // Variables
-// Valores tomados de las clases Tailwind del proyecto Next.js original.
-// ==========================================================================
 
-// --------------------------------------------------------------------------
 // Colores de marca
-// --------------------------------------------------------------------------
 $color-navy = #1B4F8A          // Primario: botones, enlaces, acentos
 $color-sky = #0EA5E9           // Acento: hover, iconos, foco
 $color-ink = #0F2D52           // Texto principal (tema claro)
@@ -16,15 +11,13 @@ $color-drawer-dark = #0D1B2F   // Panel del carrito (oscuro)
 $color-white = #ffffff
 $color-black = #000000
 
-// Fondo y texto del <body> (globals.css)
+// Fondo y texto del <body>
 $color-background-light = #ffffff
 $color-foreground-light = #171717
 $color-background-dark = #0a0a0a
 $color-foreground-dark = #ededed
 
-// --------------------------------------------------------------------------
-// Paleta Tailwind usada en estados (error, éxito, avisos, toasts)
-// --------------------------------------------------------------------------
+// Colores de estado (error, éxito, avisos, toasts)
 $color-red-50 = #fef2f2
 $color-red-300 = #fca5a5
 $color-red-400 = #f87171
@@ -65,9 +58,7 @@ $color-slate-900 = #0f172a
 $color-gray-100 = #f3f4f6
 $color-gray-700 = #374151
 
-// --------------------------------------------------------------------------
 // Tipografía
-// --------------------------------------------------------------------------
 $font-family-base = 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'
 $font-size-base = 16px
 $font-weight-light = 300
@@ -82,9 +73,7 @@ $letter-spacing-tight = -0.025em
 $letter-spacing-tighter = -0.03em
 $letter-spacing-wide = 0.025em
 
-// --------------------------------------------------------------------------
-// Breakpoints (mismos que Tailwind; mobile first)
-// --------------------------------------------------------------------------
+// Breakpoints (mobile first)
 $bp-mobile = 375px   // Ancho de referencia mínimo
 $bp-sm = 640px
 $bp-md = 768px       // Tablet
@@ -93,17 +82,13 @@ $bp-xl = 1280px      // Desktop
 $bp-tablet = $bp-md
 $bp-desktop = $bp-xl
 
-// --------------------------------------------------------------------------
 // Layout
-// --------------------------------------------------------------------------
 $container-max-width = 1220px
 $container-gutter = 16px      // px-4
 $container-gutter-sm = 24px   // sm:px-6
 $header-offset = 96px         // scroll-mt-24: compensa el header fijo
 
-// --------------------------------------------------------------------------
-// Espaciado (escala de Tailwind: 1 = 4px)
-// --------------------------------------------------------------------------
+// Espaciado (1 = 4px)
 $space-1 = 4px
 $space-2 = 8px
 $space-3 = 12px
@@ -116,9 +101,7 @@ $space-12 = 48px
 $space-16 = 64px
 $space-20 = 80px
 
-// --------------------------------------------------------------------------
 // Bordes
-// --------------------------------------------------------------------------
 $radius-md = 6px
 $radius-lg = 8px
 $radius-xl = 12px
@@ -130,9 +113,7 @@ $radius-panel = 28px
 $radius-hero = 30px
 $radius-full = 9999px
 
-// --------------------------------------------------------------------------
 // Sombras
-// --------------------------------------------------------------------------
 $shadow-xs = 0 1px 2px 0 rgba($color-black, .05)
 $shadow-sm = 0 1px 3px 0 rgba($color-black, .1), 0 1px 2px -1px rgba($color-black, .1)
 $shadow-card = 0 8px 30px rgba($color-ink, .05)
@@ -153,9 +134,7 @@ $shadow-drawer = -20px 0 50px rgba($color-ink, .18)
 $shadow-toast = 0 12px 32px rgba($color-ink, .16)
 $shadow-toast-dark = 0 12px 32px rgba($color-black, .45)
 
-// --------------------------------------------------------------------------
 // Transiciones y animaciones
-// --------------------------------------------------------------------------
 $ease-default = cubic-bezier(.4, 0, .2, 1)     // Transición por defecto de Tailwind
 $ease-out-expo = cubic-bezier(.22, 1, .36, 1)  // Entradas, dropdown, drawer
 $ease-toast = cubic-bezier(.21, 1.02, .73, 1)
@@ -165,9 +144,7 @@ $duration-slow = 500ms
 $transition-colors = color $duration-fast $ease-default, background-color $duration-fast $ease-default, border-color $duration-fast $ease-default
 $transition-base = $duration-fast $ease-default
 
-// --------------------------------------------------------------------------
 // Capas (usar con la función z())
-// --------------------------------------------------------------------------
 $z-layers = {
   base: 1,
   raised: 10,

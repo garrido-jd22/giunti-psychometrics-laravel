@@ -1,7 +1,4 @@
-{{--
-    Select accesible (listbox WAI-ARIA) con valor en un input oculto, para que el formulario
-    lo envíe. La interacción con ratón y teclado la gestiona resources/js/modules/select.js.
---}}
+{{-- Listbox WAI-ARIA; el valor va en un input oculto para enviarlo con el formulario. --}}
 @props([
     'name',
     'label',

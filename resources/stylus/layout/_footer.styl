@@ -1,6 +1,4 @@
-// ==========================================================================
 // Footer (bloque: footer)
-// ==========================================================================
 
 .footer
   width: 100%
@@ -10,13 +8,11 @@
   +dark()
     border-top-color: rgba($color-mist, .1)
 
-  // max-w-[1220px] mx-auto px-6 pt-16 pb-10
   &__inner
     max-width: $container-max-width
     margin-inline: auto
     padding: $space-16 $space-6 $space-10
 
-  // grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 pb-16
   &__grid
     display: grid
     grid-template-columns: minmax(0, 1fr)
@@ -85,7 +81,7 @@
       &:hover
         color: $color-sky
 
-  // Las columnas 2 y 4 tienen textos largos: enlaces en bloque con leading-snug
+  // Columnas 2 y 4 (textos largos): enlaces en bloque
   &__column--2 &__link,
   &__column--4 &__link
     display: block
@@ -125,7 +121,6 @@
     &--wide
       square(19px)
 
-  // px-6 py-2.5 rounded-lg bg-[#1B4F8A]/10 hover:bg-[#1B4F8A]
   &__contact
     display: inline-flex
     align-items: center

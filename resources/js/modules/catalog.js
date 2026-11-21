@@ -7,8 +7,8 @@ import { searchTiming, startInitialLoading } from './loadable';
 const ALL = 'all';
 
 /**
- * Reemplaza el grid conservando las cards que siguen en el resultado
- * (no repiten la animación de entrada, como en el original).
+ * Reemplaza el grid conservando las cards que siguen en el resultado,
+ * para que no repitan la animación de entrada.
  */
 function swapGrid($container, html, keepExisting) {
     const $next = $($.parseHTML(String(html).trim()));

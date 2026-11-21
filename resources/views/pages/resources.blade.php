@@ -42,7 +42,6 @@
                     </span>
                 </a>
 
-                {{-- Igual que en el original: ancla en la propia página. --}}
                 <a href="#contatti" class="resources__contact">Contattaci</a>
             </div>
         </div>

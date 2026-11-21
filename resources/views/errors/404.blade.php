@@ -1,4 +1,4 @@
-{{-- 404 global: sin header ni footer, como app/not-found.tsx del original. --}}
+{{-- 404 global: sin header ni footer. --}}
 @extends('layouts.app')
 
 @section('bare', true)

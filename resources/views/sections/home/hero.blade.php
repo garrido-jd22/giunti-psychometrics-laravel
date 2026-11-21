@@ -1,4 +1,3 @@
-{{-- Hero. Desktop: el vídeo cubre las filas 1-2 y las tarjetas las 2-3 (mitad encima). Mobile/tablet: sin superponer. --}}
 <section class="hero">
     <div class="hero__media" aria-hidden="true">
         <video class="hero__video" autoplay loop muted playsinline>

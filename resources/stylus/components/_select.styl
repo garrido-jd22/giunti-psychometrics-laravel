@@ -1,6 +1,4 @@
-// ==========================================================================
-// Select (bloque: select) — listbox accesible con variantes default y primary
-// ==========================================================================
+// Select (bloque: select): listbox con variantes default y primary
 
 .select
   position: relative
@@ -9,7 +7,6 @@
   +sm()
     width: auto
 
-  // h-10 pl-4 pr-3 rounded-full shadow-xs
   &__trigger
     display: flex
     align-items: center
@@ -47,14 +44,13 @@
     +dark()
       color: rgba($color-mist, .6)
 
-  // Abierto: ring-2 ring-[#0EA5E9]/60 y flecha girada
+  // Abierto: anillo y flecha girada
   &--open &__trigger
     box-shadow: 0 0 0 2px rgba($color-sky, .6), $shadow-xs
 
   &--open .icon.select__chevron
     transform: rotate(180deg)
 
-  // Variante default: fondo translúcido
   &--default &__trigger
     glass-card()
     color: $color-ink
@@ -69,7 +65,6 @@
       &:hover
         color: $color-sky
 
-  // Variante primary: bg-[#1B4F8A] text-white
   &--primary &__trigger
     background-color: $color-navy
     color: $color-white

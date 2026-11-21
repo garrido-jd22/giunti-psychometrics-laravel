@@ -10,11 +10,11 @@
 
         <title>@yield('title', config('site.name'))</title>
 
-        {{-- Aplica el tema guardado (o el del sistema) antes del primer pintado para evitar el parpadeo. --}}
+        {{-- Aplica el tema antes del primer pintado para evitar el parpadeo. --}}
         <script>
             (function () {
                 var root = document.documentElement;
-                {{-- Con JS activo los bloques .loadable arrancan mostrando su skeleton (sin parpadeo). --}}
+                {{-- Con JS, los bloques .loadable arrancan con su skeleton. --}}
                 root.classList.add('js');
                 try {
                     var theme = localStorage.getItem('theme');

@@ -14,8 +14,7 @@ export function setupHttp() {
 }
 
 /**
- * Espera al menos `ms` antes de resolver la petición (estados de carga perceptibles,
- * como el skeleton o el "Invio in corso..." del proyecto original).
+ * Espera al menos `ms` antes de resolver, para que los estados de carga se perciban.
  *
  * @param {JQuery.jqXHR} request
  * @param {number} ms

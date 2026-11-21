@@ -1,8 +1,4 @@
-{{--
-    Catálogo de una pestaña: filtros, contador y resultados.
-    Bloque mixto `loadable`: muestra el skeleton durante la carga simulada inicial
-    y mientras se aplica una búsqueda (resources/js/modules/catalog.js).
---}}
+{{-- Bloque loadable: skeleton en la carga inicial y al aplicar una búsqueda (modules/catalog.js). --}}
 <div class="catalog loadable" data-catalog data-type="{{ $type->value }}" data-url="{{ route('products.index') }}">
     <x-product.filters :type="$type" :filters="$filters" />
 

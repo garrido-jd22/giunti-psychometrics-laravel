@@ -1,4 +1,3 @@
-{{-- Pestañas Test / Formazione. Cada una es un enlace (/products?type=...). --}}
 @use('App\Enums\ProductType')
 
 @props(['activeType', 'counts'])

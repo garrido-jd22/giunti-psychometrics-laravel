@@ -1,4 +1,3 @@
-{{-- Panel lateral del carrito. Se abre con la clase cart-drawer--open (resources/js/modules/cart.js). --}}
 <div class="cart-drawer" inert data-cart-drawer>
     <div class="cart-drawer__backdrop" aria-hidden="true" data-cart-close></div>
 

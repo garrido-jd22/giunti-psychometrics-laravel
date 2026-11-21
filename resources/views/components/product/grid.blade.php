@@ -1,4 +1,4 @@
-{{-- Grid de productos: skeleton, estado vacío o cards con entrada escalonada (80 ms). --}}
+{{-- Entrada escalonada: 80 ms de retraso por card. --}}
 @props([
     'products',
     'emptyMessage' => 'Nessun prodotto corrisponde ai filtri selezionati.',

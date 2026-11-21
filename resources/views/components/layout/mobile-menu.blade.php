@@ -1,6 +1,5 @@
 @use('App\Support\Link')
 
-{{-- Menú mobile (< 1024px). Se abre con la clase mobile-menu--open (resources/js/modules/mobile-menu.js). --}}
 <div class="mobile-menu" data-mobile-menu>
     <button
         type="button"

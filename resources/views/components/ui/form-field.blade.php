@@ -1,4 +1,3 @@
-{{-- Etiqueta + control (slot) + mensaje de error o pista. --}}
 @props([
     'id',
     'label',

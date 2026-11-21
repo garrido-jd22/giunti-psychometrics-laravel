@@ -1,4 +1,3 @@
-{{-- Strumenti psicometrici e corsi in evidenza. --}}
 <section class="featured">
     <div class="container">
         <div class="featured__header u-animate-fade-up">
@@ -12,7 +11,7 @@
             </a>
         </div>
 
-        {{-- Carga simulada inicial: skeleton y después las cards (resources/js/modules/loadable.js) --}}
+        {{-- Carga simulada: skeleton y después las cards (modules/loadable.js) --}}
         <div class="loadable" data-loadable>
             <div class="loadable__skeleton">
                 <x-product.grid :products="$featuredProducts" loading :skeleton-count="$featuredProducts->count()" />

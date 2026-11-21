@@ -1,8 +1,4 @@
-{{--
-    Layout de páginas interiores (catálogo, detalle, Risorse). Equivale a los layouts
-    (catalog) y resources de Next. Secciones: page-title, page-subtitle, page-actions, page-content.
-    Sin page-title no se pinta la cabecera (detalle de producto).
---}}
+{{-- Secciones: page-title, page-subtitle, page-actions, page-content. Sin page-title no hay cabecera. --}}
 @extends('layouts.app')
 
 @section('content')

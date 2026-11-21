@@ -1,13 +1,8 @@
-// ==========================================================================
 // Botones (bloques: button, icon-button), avatar y bloques de skeleton
-// Nota: en Tailwind v4 `dark:` no suma especificidad, así que un `hover:` gana
-// también en oscuro. Aquí `html.dark .x` sí la suma: cuando el original solo
-// declara hover (sin dark:hover), se repite el hover dentro de +dark().
-// ==========================================================================
+// Nota: `html.dark .x` tiene más especificidad que `.x:hover`; si el hover
+// debe aplicarse también en oscuro, se repite dentro de +dark().
 
-// --------------------------------------------------------------------------
-// Button: inline-flex rounded-full font-semibold
-// --------------------------------------------------------------------------
+// Button
 .button
   display: inline-flex
   align-items: center
@@ -21,7 +16,6 @@
   .icon
     square(16px)
 
-  // bg-[#1B4F8A] text-white hover:bg-[#0EA5E9]
   &--primary
     background-color: $color-navy
     color: $color-white
@@ -29,25 +23,21 @@
     &:hover
       background-color: $color-sky
 
-  // active:scale-[0.97] transition-[background-color,scale]
   &--press
     transition: background-color $transition-base, scale $transition-base
 
     &:active
       scale: .97
 
-  // gap-1.5 h-10 px-4 text-[14px]
   &--pill
     gap: 6px
     height: 40px
     padding-inline: $space-4
     font-size: 14px
 
-  // w-9 h-9
   &--icon
     square(36px)
 
-  // w-full gap-2 h-12 px-6 text-[15.5px] shadow-sm
   &--block
     width: 100%
     gap: $space-2
@@ -56,7 +46,7 @@
     font-size: 15.5px
     box-shadow: $shadow-sm
 
-  // gap-3 h-11 pl-6 pr-2 shadow-sm + círculo con flecha
+  // Con círculo de flecha a la derecha
   &--arrow
     gap: $space-3
     height: 44px
@@ -76,9 +66,7 @@
   .icon.button__icon--sm
     square(14px)
 
-// --------------------------------------------------------------------------
-// Icon button: w-9 h-9 rounded-full border (tema, carrito, menú, buscar)
-// --------------------------------------------------------------------------
+// Icon button (tema, carrito, menú, buscar)
 .icon-button
   position: relative
   flex-center()
@@ -103,9 +91,7 @@
   .icon
     square(16px)
 
-// --------------------------------------------------------------------------
 // Avatar con iniciales
-// --------------------------------------------------------------------------
 .avatar
   flex-center()
   flex-shrink: 0
@@ -124,9 +110,7 @@
     square(24px)
     font-size: 10.5px
 
-// --------------------------------------------------------------------------
-// Skeleton: rounded-full bg-[#1B4F8A]/10 dark:bg-[#EFF6FF]/10
-// --------------------------------------------------------------------------
+// Skeleton
 .skeleton-block
   display: block
   border-radius: $radius-full

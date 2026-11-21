@@ -1,4 +1,4 @@
-{{-- Botón "Aggiungi al carrello". Variantes: pill (card), icon (buscador) y block (detalle). --}}
+{{-- Variantes: pill (card), icon (buscador) y block (detalle). --}}
 @props([
     'product',
     'variant' => 'pill',

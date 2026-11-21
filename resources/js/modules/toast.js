@@ -22,7 +22,7 @@ function dismiss($toast) {
 }
 
 /**
- * Reinicia la barra de progreso (se vuelve a montar, como en el original).
+ * Reinicia la barra de progreso volviendo a montarla.
  */
 function restartProgress($toast, paused) {
     const $progress = $toast.find('[data-toast-progress]');

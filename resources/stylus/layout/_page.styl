@@ -1,8 +1,5 @@
-// ==========================================================================
 // Página interior (bloque: page), breadcrumb, "Prodotto non trovato" y 404
-// ==========================================================================
 
-// min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6
 .page
   width: 100%
   min-height: 100vh
@@ -12,7 +9,6 @@
   +sm()
     padding: 128px $container-gutter-sm $space-20
 
-  // flex-col gap-5 md:flex-row md:items-end md:justify-between pb-5 border-b
   &__header
     display: flex
     flex-direction: column
@@ -53,9 +49,7 @@
     +sm()
       width: auto
 
-// --------------------------------------------------------------------------
 // Breadcrumb del detalle
-// --------------------------------------------------------------------------
 .breadcrumb
   &__list
     display: flex
@@ -91,9 +85,7 @@
   &__current
     line-clamp(1)
 
-// --------------------------------------------------------------------------
-// Producto no encontrado: min-h-[70vh] pt-32 pb-20, centrado
-// --------------------------------------------------------------------------
+// Producto no encontrado
 .not-found
   display: flex
   flex-direction: column
@@ -128,9 +120,7 @@
     padding-inline: $space-6
     font-size: 15px
 
-// --------------------------------------------------------------------------
-// 404 global (sin header ni footer; sin variante oscura, como el original)
-// --------------------------------------------------------------------------
+// 404 global (sin header, footer ni tema oscuro)
 .error-page
   display: flex
   align-items: center
@@ -138,7 +128,7 @@
   height: 100vh
   background-color: $color-gray-100
 
-  // Clase `container` de Tailwind: ancho máximo por breakpoint, sin centrar
+  // Ancho máximo por breakpoint, sin centrar
   &__container
     display: flex
     flex-direction: column
@@ -185,7 +175,6 @@
   &__text
     margin-bottom: $space-8
 
-  // h-11 px-7 rounded-[6px] text-[15.5px] shadow-sm
   &__button
     display: inline-flex
     align-items: center

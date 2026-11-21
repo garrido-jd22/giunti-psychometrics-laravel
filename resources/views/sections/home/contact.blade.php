@@ -1,7 +1,4 @@
-{{--
-    Contacto. El formulario funciona sin JavaScript (POST + validación de Laravel);
-    con JS se valida en el cliente y se envía por AJAX (Etapa 5).
---}}
+{{-- Sin JS: POST + validación de Laravel. Con JS: validación en el cliente y envío por AJAX. --}}
 @php
     $contact = config('contact');
     $messageMin = $contact['rules']['message_min_length'];

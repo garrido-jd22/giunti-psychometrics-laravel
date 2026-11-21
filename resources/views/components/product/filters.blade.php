@@ -1,7 +1,4 @@
-{{--
-    Filtros del catálogo. Es un formulario GET: sin JavaScript, Enter en el buscador
-    recarga /products con los filtros; con JS se actualiza por AJAX (Etapa 5).
---}}
+{{-- Formulario GET: sin JS recarga /products con los filtros; con JS se actualiza por AJAX. --}}
 @use('App\Enums\ProductCategory')
 
 @props(['type', 'filters'])

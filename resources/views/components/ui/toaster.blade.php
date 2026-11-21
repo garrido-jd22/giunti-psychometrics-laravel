@@ -1,4 +1,4 @@
-{{-- Contenedor de notificaciones. resources/js/modules/toast.js clona las plantillas. --}}
+{{-- modules/toast.js clona estas plantillas. --}}
 <div class="toaster" aria-live="polite" aria-label="Notifiche" data-toaster></div>
 
 <template data-toast-template>

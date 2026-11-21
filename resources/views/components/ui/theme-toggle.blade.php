@@ -1,4 +1,3 @@
-{{-- Interruptor de tema claro/oscuro (resources/js/modules/theme.js). --}}
 <button
     type="button"
     role="switch"

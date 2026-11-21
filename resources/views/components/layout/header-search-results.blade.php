@@ -1,4 +1,4 @@
-{{-- Resultados del buscador del header (respuesta HTML de products.search). --}}
+{{-- Respuesta HTML de products.search. --}}
 @props(['products'])
 
 @if ($products->isEmpty())

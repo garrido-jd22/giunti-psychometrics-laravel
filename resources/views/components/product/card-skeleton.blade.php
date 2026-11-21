@@ -1,4 +1,3 @@
-{{-- Skeleton con la misma forma que la card de producto. --}}
 <div class="product-card product-card--skeleton u-pulse" aria-hidden="true">
     <div>
         <div class="product-card__media skeleton-block skeleton-block--soft"></div>

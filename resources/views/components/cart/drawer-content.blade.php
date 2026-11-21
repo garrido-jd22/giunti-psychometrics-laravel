@@ -1,4 +1,4 @@
-{{-- Contenido del carrito (estado vacío o líneas + total). Se vuelve a pintar por AJAX. --}}
+{{-- Se vuelve a pintar por AJAX tras cada cambio del carrito. --}}
 @use('App\Support\Formatter')
 
 @props(['cart'])

@@ -5,9 +5,8 @@ namespace App\Services;
 use Illuminate\Support\Facades\Log;
 
 /**
- * Recepción del formulario de contacto.
- * El proyecto original no tiene backend (envío simulado); aquí se registra
- * en el log. Sustituir por un Mailable o una API cuando exista el destino real.
+ * Recepción del formulario de contacto: por ahora se registra en el log.
+ * Sustituir por un Mailable o una API cuando exista el destino real.
  */
 class ContactService
 {

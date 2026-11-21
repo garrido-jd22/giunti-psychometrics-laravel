@@ -1,8 +1,6 @@
-// ==========================================================================
 // Filtros del catálogo (bloque: product-filters) y pestañas (bloque: product-tabs)
-// ==========================================================================
 
-// Botón translúcido de los filtros: h-10 px-5 rounded-full shadow-xs
+// Botón translúcido de los filtros
 filter-pill()
   height: 40px
   padding-inline: $space-5
@@ -12,7 +10,6 @@ filter-pill()
   transition: $transition-colors
 
 .product-filters
-  // flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4
   &__bar
     display: flex
     flex-direction: column
@@ -75,7 +72,6 @@ filter-pill()
       &::placeholder
         color: rgba($color-mist, .5)
 
-  // Separador vertical solo en desktop
   &__divider
     display: none
     width: 1px
@@ -123,7 +119,6 @@ filter-pill()
     align-items: center
     gap: $space-4
 
-  // Botón de texto subrayado
   &__hide
     font-size: 14.5px
     font-weight: $font-weight-medium
@@ -228,9 +223,7 @@ filter-pill()
         background-color: $color-sky
         color: $color-night
 
-// --------------------------------------------------------------------------
 // Pestañas Test / Formazione
-// --------------------------------------------------------------------------
 .product-tabs
   width: 100%
 
@@ -313,15 +306,13 @@ filter-pill()
     +dark()
       background-color: rgba($color-night, .15)
 
-// --------------------------------------------------------------------------
 // Contador y resultados del catálogo
-// --------------------------------------------------------------------------
 .catalog
   &__status
     padding-top: $space-6
     font-size: 14.5px
     text-ink(.65)
 
-  // La atenuación mientras se escribe la aplica loadable--typing (components/_loadable.styl)
+  // La atenuación al escribir la aplica loadable--typing
   &__results
     padding-top: $space-4

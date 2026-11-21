@@ -1,8 +1,5 @@
-// ==========================================================================
 // Card de producto (bloque: product-card) y grid (bloque: product-grid)
-// ==========================================================================
 
-// rounded-[24px] p-4 bg-white/80 backdrop-blur-md shadow + hover:shadow
 .product-card
   position: relative
   display: flex
@@ -23,7 +20,6 @@
     &:hover
       box-shadow: $shadow-card-hover
 
-  // Imagen h-52 rounded-[18px] con zoom al pasar el ratón
   &__media
     position: relative
     width: 100%
@@ -57,7 +53,7 @@
       background-color: rgba($color-night, .8)
       color: $color-sky
 
-  // Guardar en preferiti (sin acción en el original)
+  // Guardar en preferiti (sin acción todavía)
   &__bookmark
     position: absolute
     top: $space-3
@@ -196,9 +192,7 @@
     position: relative
     z-index: z('raised')
 
-  // ------------------------------------------------------------------------
   // Skeleton: misma forma, sin blur ni hover
-  // ------------------------------------------------------------------------
   &--skeleton
     background-color: rgba($color-white, .8)
     -webkit-backdrop-filter: none
@@ -255,13 +249,11 @@
     height: 40px
     width: 144px
 
-// group-hover del título en oscuro (dark:group-hover:text-[#0EA5E9])
+// Hover de la card sobre el título, en oscuro
 html.dark .product-card:hover .product-card__title
   color: $color-sky
 
-// --------------------------------------------------------------------------
-// Grid: 1 / md:2 / lg:3 columnas, gap-5 sm:gap-7
-// --------------------------------------------------------------------------
+// Grid
 .product-grid
   display: grid
   grid-template-columns: minmax(0, 1fr)

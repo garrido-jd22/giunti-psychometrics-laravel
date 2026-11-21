@@ -24,7 +24,7 @@ return [
         'message_min_length' => 10,
     ],
 
-    /** Duración mínima del estado "Invio in corso..." (ms), como el envío simulado del original. */
+    /** Duración mínima del estado "Invio in corso..." (ms). */
     'submit_delay_ms' => 1000,
 
 ];

@@ -1,11 +1,8 @@
-// ==========================================================================
-// Loadable (bloque: loadable) — carga simulada con skeleton
+// Loadable (bloque: loadable): carga simulada con skeleton
 // Estados:
-//   - Inicial con JS (html.js sin --ready): skeleton visible, igual que la
-//     "consulta inicial" de 800 ms del original. Sin JS se ve el contenido.
-//   - --loading: búsqueda aplicada, se muestra el skeleton.
-//   - --typing: el usuario sigue escribiendo, resultados atenuados.
-// ==========================================================================
+// - html.js sin --ready: skeleton inicial (sin JS se ve el contenido)
+// - --loading: skeleton tras aplicar una búsqueda
+// - --typing: resultados atenuados mientras se escribe
 
 .loadable
   &__skeleton,
@@ -18,7 +15,6 @@
   &--typing &__content
     opacity: .6
 
-// Mientras carga: skeleton y "Ricerca in corso…" en lugar del contenido
 html.js .loadable:not(.loadable--ready),
 .loadable--loading
   .loadable__skeleton

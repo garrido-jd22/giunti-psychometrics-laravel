@@ -1,4 +1,3 @@
-{{-- Fila de la lista "Dettagli" del detalle de producto. --}}
 @props(['icon', 'label'])
 
 <div class="info-row">

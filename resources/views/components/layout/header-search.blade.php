@@ -1,4 +1,4 @@
-{{-- Buscador por nombre del header (desktop). Los resultados llegan por AJAX desde products.search. --}}
+{{-- Los resultados llegan por AJAX desde products.search. --}}
 <div class="header-search" role="search" data-header-search data-url="{{ route('products.search') }}">
     <x-ui.icon name="search" class="header-search__icon" />
 

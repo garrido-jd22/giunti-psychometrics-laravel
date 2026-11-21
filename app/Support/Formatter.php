@@ -5,8 +5,7 @@ namespace App\Support;
 use Carbon\CarbonInterface;
 
 /**
- * Formatos de presentación equivalentes a Intl "it-IT" del proyecto original
- * (la extensión intl no está disponible, así que se calculan a mano).
+ * Formatos de presentación it-IT calculados a mano (la extensión intl no está disponible).
  */
 final class Formatter
 {

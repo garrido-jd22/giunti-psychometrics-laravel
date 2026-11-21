@@ -1,4 +1,4 @@
-{{-- Botón del carrito del header. $cart lo inyecta el view composer (AppServiceProvider). --}}
+{{-- $cart lo inyecta el view composer de AppServiceProvider. --}}
 <button
     type="button"
     class="icon-button cart-button"

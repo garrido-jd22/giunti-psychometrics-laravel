@@ -1,6 +1,5 @@
 @use('App\Support\Formatter')
 
-{{-- Detalle de producto: breadcrumb, contenido y columna de compra (fija en desktop). --}}
 <nav class="breadcrumb u-animate-fade-down" aria-label="Percorso">
     <ol class="breadcrumb__list">
         <li>

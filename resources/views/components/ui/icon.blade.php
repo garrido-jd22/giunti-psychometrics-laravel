@@ -1,8 +1,4 @@
-{{--
-    Icono SVG (trazos de lucide, licencia ISC) guardado en resources/views/icons/{name}.blade.php.
-    Uso: <x-ui.icon name="search" class="bloque__elemento" :stroke-width="1.8" />
-    Decorativo por defecto (aria-hidden); pasa aria-label y role="img" si transmite información.
---}}
+{{-- SVG de resources/views/icons/{name}. Decorativo (aria-hidden) salvo que se pase aria-label. --}}
 @props([
     'name',
     'strokeWidth' => 2,

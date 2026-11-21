@@ -1,8 +1,6 @@
-// ==========================================================================
 // Carrito (bloques: cart-drawer, cart-item)
-// ==========================================================================
 
-// fixed inset-0 z-[60]; cerrado: sin eventos de puntero
+// Cerrado: sin eventos de puntero
 .cart-drawer
   position: fixed
   inset: 0
@@ -12,7 +10,6 @@
   &--open
     pointer-events: auto
 
-  // bg-[#091526]/45 backdrop-blur-[2px] transition-opacity duration-300
   &__backdrop
     position: absolute
     inset: 0
@@ -23,7 +20,6 @@
   &--open &__backdrop
     opacity: 1
 
-  // h-full w-full sm:w-[420px] sm:rounded-l-[28px] translate-x-full
   &__panel
     position: absolute
     top: 0
@@ -216,7 +212,7 @@
     &:focus
       outline: none
 
-  // Con anillo separado del panel (ring-offset-2)
+  // Anillo separado del panel
   &__checkout
     gap: $space-2
     background-color: $color-navy
@@ -253,9 +249,7 @@
       &:hover
         background-color: rgba($color-mist, .05)
 
-// --------------------------------------------------------------------------
 // Línea del carrito
-// --------------------------------------------------------------------------
 .cart-item
   display: flex
   gap: 14px
@@ -302,7 +296,6 @@
       &:hover
         color: $color-sky
 
-  // w-8 h-8 -mt-1 -mr-1: papelera que se vuelve roja
   &__remove
     flex-center()
     flex-shrink: 0

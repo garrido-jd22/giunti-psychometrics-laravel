@@ -1,8 +1,5 @@
-// ==========================================================================
 // Detalle de producto (bloques: product-detail, info-row, purchase-card)
-// ==========================================================================
 
-// grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-8 lg:gap-10
 .product-detail
   display: grid
   grid-template-columns: minmax(0, 1fr)
@@ -17,7 +14,6 @@
   &__main
     min-width: 0
 
-  // h-60 sm:h-80 lg:h-[400px] rounded-[28px]
   &__media
     position: relative
     width: 100%
@@ -112,7 +108,7 @@
     align-items: center
     gap: $space-2
 
-  // Columna de compra fija en desktop (lg:sticky lg:top-28)
+  // Columna de compra fija en desktop
   &__aside
     animation-delay(150ms)
 
@@ -120,9 +116,7 @@
       position: sticky
       top: 112px
 
-// --------------------------------------------------------------------------
 // Fila de "Dettagli"
-// --------------------------------------------------------------------------
 .info-row
   display: flex
   align-items: flex-start
@@ -157,9 +151,7 @@
     font-weight: $font-weight-semibold
     text-ink()
 
-// --------------------------------------------------------------------------
 // Tarjeta de compra
-// --------------------------------------------------------------------------
 .purchase-card
   padding: $space-6
   border-radius: $radius-panel

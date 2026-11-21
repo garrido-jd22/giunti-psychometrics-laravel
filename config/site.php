@@ -7,7 +7,7 @@
 |
 | Los enlaces internos se definen por nombre de ruta ('route', 'params',
 | 'fragment') para resolverlos con route() en las vistas. Los enlaces sin
-| destino en el proyecto original se mantienen como '#'.
+| destino todavía se mantienen como '#'.
 |
 */
 
@@ -19,7 +19,7 @@ return [
 
     'tagline' => 'Where Science Meets People',
 
-    /** Tarjetas bajo el hero (cifras de ejemplo del original). */
+    /** Tarjetas bajo el hero (cifras de ejemplo). */
     'hero_features' => [
         ['icon' => 'graduation-cap', 'title' => 'Oltre 100 corsi', 'description' => 'Formazione online e in presenza'],
         ['icon' => 'badge-check', 'title' => 'Certificazioni validate', 'description' => 'Riconosciute in ambito clinico e professionale'],

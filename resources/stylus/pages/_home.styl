@@ -1,11 +1,7 @@
-// ==========================================================================
 // Home (bloques: hero, hero-feature, featured, contact, contact-form)
-// ==========================================================================
 
-// --------------------------------------------------------------------------
-// Hero: grid de 3 filas (auto 1fr 1fr). En desktop el vídeo ocupa las filas
-// 1-2 y las tarjetas las 2-3, así que quedan a mitad sobre el vídeo.
-// --------------------------------------------------------------------------
+// Hero: grid de 3 filas. En desktop el vídeo ocupa las filas 1-2 y las
+// tarjetas las 2-3, así que quedan a mitad sobre el vídeo.
 .hero
   position: relative
   display: grid
@@ -48,7 +44,6 @@
     +dark()
       background-color: rgba($color-night, .65)
 
-  // min-h-[520px] sm:min-h-[600px] max-w-[980px] pt-32 pb-12 sm:pb-16
   &__content
     position: relative
     z-index: z('raised')
@@ -85,7 +80,7 @@
       border-color: rgba($color-mist, .15)
       background-color: rgba($color-night, .8)
 
-  // flex -space-x-2
+  // Avatares superpuestos
   &__avatars
     display: flex
 
@@ -120,7 +115,6 @@
     font-weight: $font-weight-semibold
     text-ink()
 
-  // text-4xl sm:text-6xl md:text-[68px] font-medium tracking-[-0.03em] leading-[1.08]
   &__title
     margin-bottom: $space-5
     font-size: 36px
@@ -150,7 +144,6 @@
     margin-top: $space-1
     animation-delay(450ms)
 
-  // h-11 px-7 text-[15.5px] font-medium text-[#EFF6FF] shadow-sm
   &__button
     height: 44px
     padding-inline: 28px
@@ -174,7 +167,6 @@
     +lg()
       margin-top: 0
 
-  // grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4
   &__features-list
     display: grid
     grid-template-columns: repeat(2, minmax(0, 1fr))
@@ -268,14 +260,12 @@
     +sm()
       font-size: 13.5px
 
-// group-hover del icono en oscuro
+// Hover de la tarjeta sobre el icono, en oscuro
 html.dark .hero-feature:hover .hero-feature__icon
   background-color: $color-sky
   color: $color-night
 
-// --------------------------------------------------------------------------
 // Productos destacados
-// --------------------------------------------------------------------------
 .featured
   width: 100%
   padding: $space-20 $container-gutter
@@ -308,7 +298,6 @@ html.dark .hero-feature:hover .hero-feature__icon
     +dark()
       background-color: rgba($color-sky, .2)
 
-  // text-3xl sm:text-4xl font-semibold tracking-tight
   &__title
     font-size: 30px
     line-height: 36px
@@ -341,9 +330,7 @@ html.dark .hero-feature:hover .hero-feature__icon
     .icon
       square(16px)
 
-// --------------------------------------------------------------------------
 // Contacto
-// --------------------------------------------------------------------------
 .contact
   width: 100%
   padding: $space-16 $container-gutter
@@ -353,7 +340,6 @@ html.dark .hero-feature:hover .hero-feature__icon
   +sm()
     padding: $space-20 $container-gutter-sm
 
-  // grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10
   &__grid
     display: grid
     grid-template-columns: minmax(0, 1fr)
@@ -378,7 +364,6 @@ html.dark .hero-feature:hover .hero-feature__icon
     +lg()
       grid-column: span 7
 
-  // text-4xl sm:text-5xl md:text-[56px] tracking-[-0.03em] leading-[1.06]
   &__title
     font-size: 36px
     font-weight: $font-weight-semibold
@@ -443,7 +428,6 @@ html.dark .hero-feature:hover .hero-feature__icon
     font-size: 12px
     text-ink(.6)
 
-  // rounded-[28px] p-6 sm:p-9 bg-white/85
   &__panel
     position: relative
     overflow: hidden
@@ -473,7 +457,7 @@ html.dark .hero-feature:hover .hero-feature__icon
     +dark()
       display: block
 
-// space-y-5 como flex + gap: el input oculto de @csrf no genera separación
+// flex + gap en lugar de márgenes: el input oculto de @csrf no suma espacio
 .contact-form
   position: relative
   z-index: z('raised')
@@ -519,7 +503,6 @@ html.dark .hero-feature:hover .hero-feature__icon
     font-size: 13px
     text-ink(.6)
 
-  // gap-3 h-11 pl-6 pr-2 rounded-full self-end
   &__submit
     display: inline-flex
     align-items: center

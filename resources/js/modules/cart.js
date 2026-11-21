@@ -22,7 +22,7 @@ let lastCount = null;
 function render(state) {
     const $badge = $('[data-cart-badge]');
 
-    // Se vuelve a montar el contador para repetir su animación, como en el original.
+    // Se vuelve a montar el contador para repetir su animación.
     if (state.count !== lastCount && state.count > 0) {
         $badge.replaceWith($badge.clone().text(state.badge).prop('hidden', false));
     } else {
