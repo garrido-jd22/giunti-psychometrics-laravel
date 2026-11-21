@@ -1,0 +1,47 @@
+// ==========================================================================
+// Utilidades (prefijo u- para distinguirlas de los bloques BEM)
+// ==========================================================================
+
+.u-visually-hidden
+  visually-hidden()
+
+.u-text-center
+  text-align: center
+
+.u-hide-mobile
+  +mobile-only()
+    display: none !important
+
+.u-hide-tablet-up
+  +tablet()
+    display: none !important
+
+// Animaciones de entrada (motion-safe:animate-*). El retraso se pasa con
+// style="animation-delay: …" o con el mixin animation-delay(); por eso se usan
+// propiedades individuales en lugar del shorthand (que reiniciaría el retraso).
+entrance-animation($name, $duration, $easing)
+  animation-name: $name
+  animation-duration: $duration
+  animation-timing-function: $easing
+  animation-fill-mode: both
+
++motion-safe()
+  .u-animate-fade-down
+    entrance-animation(fade-down, 700ms, $ease-out-expo)
+
+  .u-animate-fade-up
+    entrance-animation(fade-up, 700ms, $ease-out-expo)
+
+  .u-animate-fade-in
+    entrance-animation(fade-in, 800ms, ease-out)
+
+  .u-animate-dropdown-in
+    entrance-animation(dropdown-in, 160ms, $ease-out-expo)
+
+// Skeleton (animate-pulse)
+.u-pulse
+  animation: pulse 2s $ease-default infinite
+
+// Icono girando (animate-spin)
+.u-spin
+  animation: spin 1s linear infinite

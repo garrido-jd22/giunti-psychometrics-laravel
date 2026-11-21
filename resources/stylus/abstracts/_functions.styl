@@ -1,0 +1,13 @@
+// ==========================================================================
+// Funciones
+// ==========================================================================
+
+// Convierte px a rem tomando $font-size-base como referencia
+// Uso: font-size: rem(24px)
+rem($value)
+  unit(($value / $font-size-base), 'rem')
+
+// Devuelve el z-index de una capa definida en $z-layers
+// Uso: z-index: z('header')
+z($layer)
+  $z-layers[$layer]

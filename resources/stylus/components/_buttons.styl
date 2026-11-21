@@ -1,0 +1,139 @@
+// ==========================================================================
+// Botones (bloques: button, icon-button), avatar y bloques de skeleton
+// Nota: en Tailwind v4 `dark:` no suma especificidad, así que un `hover:` gana
+// también en oscuro. Aquí `html.dark .x` sí la suma: cuando el original solo
+// declara hover (sin dark:hover), se repite el hover dentro de +dark().
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Button: inline-flex rounded-full font-semibold
+// --------------------------------------------------------------------------
+.button
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  gap: 6px
+  border-radius: $radius-full
+  font-weight: $font-weight-semibold
+  transition: $transition-colors
+
+  .icon
+    square(16px)
+
+  // bg-[#1B4F8A] text-white hover:bg-[#0EA5E9]
+  &--primary
+    background-color: $color-navy
+    color: $color-white
+
+    &:hover
+      background-color: $color-sky
+
+  // active:scale-[0.97] transition-[background-color,scale]
+  &--press
+    transition: background-color $transition-base, scale $transition-base
+
+    &:active
+      scale: .97
+
+  // gap-1.5 h-10 px-4 text-[14px]
+  &--pill
+    gap: 6px
+    height: 40px
+    padding-inline: $space-4
+    font-size: 14px
+
+  // w-9 h-9
+  &--icon
+    square(36px)
+
+  // w-full gap-2 h-12 px-6 text-[15.5px] shadow-sm
+  &--block
+    width: 100%
+    gap: $space-2
+    height: 48px
+    padding-inline: $space-6
+    font-size: 15.5px
+    box-shadow: $shadow-sm
+
+  // gap-3 h-11 pl-6 pr-2 shadow-sm + círculo con flecha
+  &--arrow
+    gap: $space-3
+    height: 44px
+    padding-left: $space-6
+    padding-right: $space-2
+    box-shadow: $shadow-sm
+
+  &__arrow
+    flex-center()
+    square(28px)
+    border-radius: $radius-full
+    background-color: rgba($color-white, .15)
+
+    .icon
+      square(14px)
+
+  .icon.button__icon--sm
+    square(14px)
+
+// --------------------------------------------------------------------------
+// Icon button: w-9 h-9 rounded-full border (tema, carrito, menú, buscar)
+// --------------------------------------------------------------------------
+.icon-button
+  position: relative
+  flex-center()
+  square(36px)
+  border-radius: $radius-full
+  border: 1px solid rgba($color-navy, .25)
+  color: $color-ink
+  transition: $transition-colors
+
+  &:hover
+    border-color: $color-sky
+    color: $color-sky
+
+  +dark()
+    border-color: rgba($color-mist, .25)
+    color: $color-mist
+
+    &:hover
+      border-color: $color-sky
+      color: $color-sky
+
+  .icon
+    square(16px)
+
+// --------------------------------------------------------------------------
+// Avatar con iniciales
+// --------------------------------------------------------------------------
+.avatar
+  flex-center()
+  flex-shrink: 0
+  square(32px)
+  border-radius: $radius-full
+  background-color: rgba($color-navy, .15)
+  color: $color-navy
+  font-size: 12px
+  font-weight: $font-weight-bold
+
+  +dark()
+    background-color: rgba($color-sky, .2)
+    color: $color-sky
+
+  &--sm
+    square(24px)
+    font-size: 10.5px
+
+// --------------------------------------------------------------------------
+// Skeleton: rounded-full bg-[#1B4F8A]/10 dark:bg-[#EFF6FF]/10
+// --------------------------------------------------------------------------
+.skeleton-block
+  display: block
+  border-radius: $radius-full
+  background-color: rgba($color-navy, .1)
+
+  +dark()
+    background-color: rgba($color-mist, .1)
+
+  &--soft
+    border-radius: $radius-xl

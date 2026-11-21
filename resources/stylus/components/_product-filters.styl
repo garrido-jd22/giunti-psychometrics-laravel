@@ -1,0 +1,330 @@
+// ==========================================================================
+// Filtros del catálogo (bloque: product-filters) y pestañas (bloque: product-tabs)
+// ==========================================================================
+
+// Botón translúcido de los filtros: h-10 px-5 rounded-full shadow-xs
+filter-pill()
+  height: 40px
+  padding-inline: $space-5
+  border-radius: $radius-full
+  font-size: 14.5px
+  box-shadow: $shadow-xs
+  transition: $transition-colors
+
+.product-filters
+  // flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4
+  &__bar
+    display: flex
+    flex-direction: column
+    gap: $space-3
+    padding-top: $space-5
+
+    +lg()
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      gap: $space-4
+
+  &__fields
+    display: flex
+    flex-direction: column
+    gap: $space-3
+
+    +sm()
+      flex-direction: row
+      flex-wrap: wrap
+      align-items: center
+
+  &__search
+    position: relative
+    display: flex
+    align-items: center
+    width: 100%
+
+    +sm()
+      width: 256px
+
+  .icon.product-filters__search-icon
+    position: absolute
+    left: $space-4
+    pointer-events: none
+    text-ink(.5)
+
+  &__search-input
+    width: 100%
+    height: 40px
+    padding-left: $space-10
+    padding-right: $space-4
+    border-radius: $radius-full
+    glass-card()
+    color: $color-ink
+    font-size: 14.5px
+    box-shadow: $shadow-xs
+    transition: all $transition-base
+
+    &::placeholder
+      color: rgba($color-ink, .5)
+
+    &:focus
+      outline: none
+      box-shadow: 0 0 0 2px $color-sky, $shadow-xs
+
+    +dark()
+      color: $color-mist
+
+      &::placeholder
+        color: rgba($color-mist, .5)
+
+  // Separador vertical solo en desktop
+  &__divider
+    display: none
+    width: 1px
+    height: 20px
+    margin-inline: 2px
+    background-color: rgba($color-navy, .15)
+
+    +lg()
+      display: inline-block
+
+    +dark()
+      background-color: rgba($color-mist, .15)
+
+  &__selects
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: $space-3
+
+    +sm()
+      display: flex
+      align-items: center
+
+  // "Mostra filtri": visible solo con los filtros ocultos
+  &__show
+    display: none
+    align-self: flex-start
+    align-items: center
+    gap: $space-2
+    filter-pill()
+    glass-card()
+    color: $color-navy
+    font-weight: $font-weight-semibold
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: $color-sky
+
+    .icon
+      square(16px)
+
+  &__controls
+    display: flex
+    align-items: center
+    gap: $space-4
+
+  // Botón de texto subrayado
+  &__hide
+    font-size: 14.5px
+    font-weight: $font-weight-medium
+    text-decoration: underline
+    text-underline-offset: 4px
+    color: rgba($color-ink, .8)
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: rgba($color-mist, .8)
+
+      &:hover
+        color: $color-sky
+
+  &__reset
+    margin-left: auto
+    filter-pill()
+    glass-card(.75, .75)
+    color: rgba($color-ink, .75)
+    font-weight: $font-weight-medium
+
+    &:hover
+      color: $color-sky
+
+    &:disabled
+      opacity: .5
+      cursor: not-allowed
+
+      &:hover
+        color: rgba($color-ink, .75)
+
+    +dark()
+      color: rgba($color-mist, .75)
+
+      &:hover
+        color: $color-sky
+
+      &:disabled:hover
+        color: rgba($color-mist, .75)
+
+  // Filtros ocultos con "Nascondi"
+  &--collapsed &__fields,
+  &--collapsed &__hide
+    display: none
+
+  &--collapsed &__show
+    display: inline-flex
+
+  // Chips: scroll horizontal en mobile (a sangre), en línea con wrap desde md
+  &__chips
+    display: flex
+    gap: $space-2
+    margin-inline: -($container-gutter)
+    padding: $space-5 $container-gutter 0
+    overflow-x: auto
+    scrollbar-width: none
+
+    &::-webkit-scrollbar
+      display: none
+
+    +sm()
+      margin-inline: -($container-gutter-sm)
+      padding-inline: $container-gutter-sm
+
+    +md()
+      flex-wrap: wrap
+      margin-inline: 0
+      padding-inline: 0
+      overflow: visible
+
+  &__chip
+    flex-shrink: 0
+    height: 36px
+    padding-inline: $space-4
+    border-radius: $radius-full
+    white-space: nowrap
+    background-color: rgba($color-white, .75)
+    color: rgba($color-ink, .8)
+    font-size: 14px
+    font-weight: $font-weight-medium
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      background-color: rgba($color-surface-dark, .8)
+      color: rgba($color-mist, .8)
+
+      &:hover
+        color: $color-sky
+
+    &--active,
+    &--active:hover
+      background-color: $color-navy
+      color: $color-white
+
+      +dark()
+        background-color: $color-sky
+        color: $color-night
+
+// --------------------------------------------------------------------------
+// Pestañas Test / Formazione
+// --------------------------------------------------------------------------
+.product-tabs
+  width: 100%
+
+  +sm()
+    width: auto
+
+  &__list
+    display: flex
+    gap: $space-1
+    width: 100%
+    padding: $space-1
+    border-radius: $radius-full
+    glass-card(.7, .8)
+    box-shadow: $shadow-xs
+
+    +sm()
+      width: auto
+
+  &__item
+    flex: 1
+
+    +sm()
+      flex: none
+
+  &__link
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: $space-2
+    height: 40px
+    padding-inline: $space-4
+    border-radius: $radius-full
+    white-space: nowrap
+    font-size: 14.5px
+    font-weight: $font-weight-semibold
+    color: rgba($color-ink, .75)
+    transition: $transition-colors
+
+    +sm()
+      padding-inline: $space-5
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: rgba($color-mist, .75)
+
+      &:hover
+        color: $color-sky
+
+    .icon
+      square(16px)
+
+    &--active,
+    &--active:hover
+      background-color: $color-navy
+      color: $color-white
+      box-shadow: $shadow-sm
+
+      +dark()
+        background-color: $color-sky
+        color: $color-night
+
+  &__count
+    flex-center()
+    min-width: 24px
+    height: 24px
+    padding-inline: 6px
+    border-radius: $radius-full
+    background-color: rgba($color-navy, .1)
+    font-size: 12.5px
+    font-weight: $font-weight-bold
+
+    +dark()
+      background-color: rgba($color-mist, .1)
+
+  &__link--active &__count
+    background-color: rgba($color-white, .2)
+
+    +dark()
+      background-color: rgba($color-night, .15)
+
+// --------------------------------------------------------------------------
+// Contador y resultados del catálogo
+// --------------------------------------------------------------------------
+.catalog
+  &__status
+    padding-top: $space-6
+    font-size: 14.5px
+    text-ink(.65)
+
+  &__results
+    padding-top: $space-4
+    transition: opacity $transition-base
+
+    &--typing
+      opacity: .6

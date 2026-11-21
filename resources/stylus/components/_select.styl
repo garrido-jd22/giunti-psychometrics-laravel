@@ -1,0 +1,147 @@
+// ==========================================================================
+// Select (bloque: select) — listbox accesible con variantes default y primary
+// ==========================================================================
+
+.select
+  position: relative
+  width: 100%
+
+  +sm()
+    width: auto
+
+  // h-10 pl-4 pr-3 rounded-full shadow-xs
+  &__trigger
+    display: flex
+    align-items: center
+    gap: $space-2
+    width: 100%
+    height: 40px
+    padding-left: $space-4
+    padding-right: $space-3
+    border-radius: $radius-full
+    font-size: 14.5px
+    box-shadow: $shadow-xs
+    transition: $transition-colors
+
+    &:focus
+      outline: none
+
+    &:focus-visible
+      box-shadow: 0 0 0 2px $color-sky, $shadow-xs
+
+  .icon.select__icon
+    square(16px)
+    color: $color-sky
+
+  &__value
+    truncate()
+    flex: 1
+    min-width: 0
+    text-align: left
+
+  .icon.select__chevron
+    square(16px)
+    color: rgba($color-ink, .6)
+    transition: transform 200ms $ease-default
+
+    +dark()
+      color: rgba($color-mist, .6)
+
+  // Abierto: ring-2 ring-[#0EA5E9]/60 y flecha girada
+  &--open &__trigger
+    box-shadow: 0 0 0 2px rgba($color-sky, .6), $shadow-xs
+
+  &--open .icon.select__chevron
+    transform: rotate(180deg)
+
+  // Variante default: fondo translúcido
+  &--default &__trigger
+    glass-card()
+    color: $color-ink
+    font-weight: $font-weight-medium
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: $color-mist
+
+      &:hover
+        color: $color-sky
+
+  // Variante primary: bg-[#1B4F8A] text-white
+  &--primary &__trigger
+    background-color: $color-navy
+    color: $color-white
+    font-weight: $font-weight-semibold
+
+    &:hover
+      background-color: $color-sky
+
+  &--primary .icon.select__icon
+    color: rgba($color-white, .8)
+
+  &--primary .icon.select__chevron
+    color: $color-white
+
+  // Lista: mobile al ancho del trigger; sm+ al ancho del contenido (máx. 320px)
+  &__listbox
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    z-index: z('dropdown')
+    max-height: 288px
+    margin-top: $space-2
+    padding: 6px
+    overflow-y: auto
+    border-radius: $radius-2xl
+    border: 1px solid rgba($color-navy, .1)
+    glass($color-white, .95)
+    box-shadow: $shadow-listbox
+    transform-origin: top
+
+    +sm()
+      right: auto
+      min-width: 100%
+      width: max-content
+      max-width: 320px
+
+    +dark()
+      border-color: rgba($color-mist, .1)
+      background-color: rgba($color-surface-dark, .95)
+      box-shadow: $shadow-popover-dark
+
+    +motion-safe()
+      animation: dropdown-in 160ms $ease-out-expo both
+
+  &__option
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: $space-3
+    padding: 10px $space-3
+    border-radius: $radius-xl
+    font-size: 14.5px
+    cursor: pointer
+    text-ink(.85)
+    transition: $transition-colors
+
+    // Opción resaltada con teclado o ratón
+    &--active
+      background-color: $color-mist
+
+      +dark()
+        background-color: rgba($color-night, .8)
+
+    &--selected
+      font-weight: $font-weight-semibold
+      text-accent()
+
+  .icon.select__check
+    square(16px)
+    color: $color-sky
+    opacity: 0
+
+  &__option--selected .icon.select__check
+    opacity: 1

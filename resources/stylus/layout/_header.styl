@@ -1,0 +1,392 @@
+// ==========================================================================
+// Header (bloques: header, header-search, mobile-menu, theme-toggle, cart-button)
+// ==========================================================================
+
+// fixed top-0 inset-x-0 z-50 w-full pt-4 px-4 sm:px-6
+.header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: z('header')
+  width: 100%
+  padding-top: $space-4
+  padding-inline: $container-gutter
+
+  +sm()
+    padding-inline: $container-gutter-sm
+
+  // Píldora translúcida: rounded-full pl-4 pr-2.5 sm:px-7 py-2.5 bg-[#EFF6FF]/75 backdrop-blur-md
+  &__bar
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: $space-3
+    max-width: $container-max-width
+    margin-inline: auto
+    padding: 10px 10px 10px $space-4
+    border-radius: $radius-full
+    glass($color-mist, .75)
+    transition: background-color $duration-base $ease-default
+
+    +sm()
+      padding-inline: 28px
+
+    +dark()
+      background-color: rgba($color-night, .75)
+
+  // hidden lg:flex lg:gap-6 xl:gap-8
+  &__nav
+    display: none
+    align-items: center
+    gap: $space-6
+
+    +lg()
+      display: flex
+
+    +xl()
+      gap: $space-8
+
+  &__link
+    font-size: 15.5px
+    font-weight: $font-weight-medium
+    color: $color-ink
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: $color-mist
+
+      &:hover
+        color: $color-sky
+
+  &__actions
+    display: flex
+    align-items: center
+    flex-shrink: 0
+    gap: $space-2
+
+    +sm()
+      gap: $space-3
+
+  // Botón de búsqueda solo entre sm y lg (sin acción en el original)
+  &__search-button
+    display: none
+
+    +sm()
+      display: flex
+
+    +lg()
+      display: none
+
+  // hidden sm:inline-flex h-9 px-5 text-[15px]
+  &__login
+    display: none
+    height: 36px
+    padding-inline: $space-5
+    font-size: 15px
+
+    +sm()
+      display: inline-flex
+
+// --------------------------------------------------------------------------
+// Buscador del header (desktop)
+// --------------------------------------------------------------------------
+.header-search
+  position: relative
+  display: none
+  align-items: center
+
+  +lg()
+    display: flex
+
+  &__icon
+    position: absolute
+    left: 14px
+    pointer-events: none
+    text-ink(.5)
+
+  // h-9 w-48 xl:w-60 pl-10 pr-4 rounded-full border focus:ring-2
+  &__input
+    height: 36px
+    width: 192px
+    padding-left: $space-10
+    padding-right: $space-4
+    border-radius: $radius-full
+    border: 1px solid rgba($color-navy, .2)
+    background-color: rgba($color-white, .7)
+    color: $color-ink
+    font-size: 14.5px
+    transition: all $transition-base
+
+    +xl()
+      width: 240px
+
+    &::placeholder
+      color: rgba($color-ink, .5)
+
+    &:focus
+      outline: none
+      border-color: $color-sky
+      ring(rgba($color-sky, .3))
+
+    +dark()
+      border-color: rgba($color-mist, .15)
+      background-color: rgba($color-surface-dark, .8)
+      color: $color-mist
+
+      &::placeholder
+        color: rgba($color-mist, .5)
+
+      &:focus
+        border-color: $color-sky
+
+  // absolute top-full right-0 mt-4 w-[400px] max-h-[70vh] rounded-3xl p-2
+  &__popover
+    position: absolute
+    top: 100%
+    right: 0
+    width: 400px
+    max-height: 70vh
+    margin-top: $space-4
+    padding: $space-2
+    overflow-y: auto
+    border-radius: $radius-3xl
+    border: 1px solid rgba($color-navy, .1)
+    glass($color-white, .95)
+    box-shadow: $shadow-popover
+
+    +dark()
+      border-color: rgba($color-mist, .1)
+      background-color: rgba($color-surface-dark, .95)
+      box-shadow: $shadow-popover-dark
+
+  &__status
+    padding: $space-2 $space-3 $space-1
+    font-size: 12.5px
+    font-weight: $font-weight-semibold
+    text-transform: uppercase
+    letter-spacing: $letter-spacing-wide
+    text-ink(.5)
+
+  &__list
+    transition: opacity $transition-base
+
+    &--typing
+      opacity: .6
+
+  &__item
+    display: flex
+    align-items: center
+    gap: $space-3
+    padding: 10px
+    border-radius: $radius-2xl
+    transition: $transition-colors
+
+    &:hover
+      background-color: $color-mist
+
+    +dark()
+      &:hover
+        background-color: rgba($color-night, .7)
+
+    &--skeleton:hover
+      background-color: transparent !important
+
+  &__link
+    display: flex
+    flex: 1
+    align-items: center
+    gap: $space-3
+    min-width: 0
+
+  &__thumb
+    flex-shrink: 0
+    square(56px)
+    border-radius: $radius-xl
+    object-fit: cover
+    background-color: rgba($color-navy, .1)
+
+  &__text
+    display: block
+    flex: 1
+    min-width: 0
+
+  &__title
+    line-clamp(1)
+    font-size: 14.5px
+    font-weight: $font-weight-semibold
+    line-height: $line-height-snug
+    text-ink()
+
+  &__description
+    line-clamp(2)
+    margin-top: 2px
+    font-size: 13px
+    line-height: $line-height-snug
+    text-ink(.65)
+
+  &__skeleton-text
+    display: block
+    flex: 1
+
+  &__skeleton-line
+    &--title
+      height: 14px
+      width: 75%
+
+    &--full
+      height: 12px
+      width: 100%
+      margin-top: $space-2
+
+    &--short
+      height: 12px
+      width: 66.666%
+      margin-top: 6px
+
+  &__skeleton-action
+    flex-shrink: 0
+    square(36px)
+
+  &__empty
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: $space-2
+    padding-block: $space-8
+    text-align: center
+    text-ink(.65)
+
+  .icon.header-search__empty-icon
+    square(24px)
+    color: $color-sky
+
+  &__empty-text
+    font-size: 14px
+
+// --------------------------------------------------------------------------
+// Menú mobile (< lg)
+// --------------------------------------------------------------------------
+.mobile-menu
+  +lg()
+    display: none
+
+  &__icon--close
+    display: none !important
+
+  &--open &__icon--open
+    display: none !important
+
+  &--open &__icon--close
+    display: block !important
+
+  // absolute top-full inset-x-0 mt-2 p-2 rounded-3xl bg-white/95 animate-toast-in
+  &__panel
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    margin-top: $space-2
+    padding: $space-2
+    border-radius: $radius-3xl
+    glass($color-white, .95)
+    box-shadow: $shadow-popover
+    animation: toast-in 240ms $ease-toast both
+
+    +dark()
+      background-color: rgba($color-surface-dark, .95)
+      box-shadow: $shadow-popover-dark
+
+  &__list
+    display: flex
+    flex-direction: column
+
+  &__link
+    display: block
+    padding: $space-3 $space-4
+    border-radius: $radius-2xl
+    font-size: 16px
+    font-weight: $font-weight-medium
+    color: $color-ink
+    transition: $transition-colors
+
+    &:hover
+      background-color: $color-mist
+      color: $color-sky
+
+    +dark()
+      color: $color-mist
+
+      &:hover
+        background-color: rgba($color-night, .7)
+        color: $color-sky
+
+  // sm:hidden mt-2 w-full h-11 rounded-full
+  &__login
+    width: 100%
+    height: 44px
+    margin-top: $space-2
+    border-radius: $radius-full
+    background-color: $color-navy
+    color: $color-white
+    font-size: 15px
+    font-weight: $font-weight-semibold
+    transition: $transition-colors
+
+    &:hover
+      background-color: $color-sky
+
+    +sm()
+      display: none
+
+// --------------------------------------------------------------------------
+// Interruptor de tema: el sol gira y desaparece en oscuro; la luna aparece
+// --------------------------------------------------------------------------
+.theme-toggle
+  .icon.theme-toggle__icon
+    square(16px)
+    transition: transform $duration-base $ease-default
+
+  .icon.theme-toggle__icon--sun
+    transform: rotate(0) scale(1)
+
+    +dark()
+      position: absolute
+      transform: rotate(-90deg) scale(0)
+
+  .icon.theme-toggle__icon--moon
+    position: absolute
+    transform: rotate(90deg) scale(0)
+
+    +dark()
+      position: static
+      transform: rotate(0) scale(1)
+
+// --------------------------------------------------------------------------
+// Botón del carrito: contador con anillo del color del header
+// --------------------------------------------------------------------------
+.cart-button
+  &__badge
+    position: absolute
+    top: -6px
+    right: -6px
+    flex-center()
+    min-width: 20px
+    height: 20px
+    padding-inline: $space-1
+    border-radius: $radius-full
+    background-color: $color-sky
+    color: $color-white
+    font-size: 11px
+    font-weight: $font-weight-bold
+    ring($color-mist)
+
+    +dark()
+      ring($color-night)
+
+    +motion-safe()
+      animation: dropdown-in 160ms $ease-out-expo both

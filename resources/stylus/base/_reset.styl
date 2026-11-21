@@ -1,0 +1,80 @@
+// ==========================================================================
+// Reset (equivalente al preflight de Tailwind del proyecto original)
+// ==========================================================================
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+  border: 0 solid
+
+html
+  -webkit-text-size-adjust: 100%
+  -moz-tab-size: 4
+  tab-size: 4
+  line-height: $line-height-base
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+  // motion-safe:scroll-smooth
+  +motion-safe()
+    scroll-behavior: smooth
+
+img,
+picture,
+svg,
+video
+  display: block
+  max-width: 100%
+
+img,
+video
+  height: auto
+
+input,
+button,
+textarea,
+select
+  font: inherit
+  letter-spacing: inherit
+  color: inherit
+  background-color: transparent
+  border-radius: 0
+
+button
+  cursor: pointer
+
+  &:disabled
+    cursor: default
+
+textarea
+  resize: vertical
+
+input::placeholder,
+textarea::placeholder
+  opacity: 1
+
+input[type='search']
+  -webkit-appearance: none
+  appearance: none
+
+  &::-webkit-search-cancel-button
+    -webkit-appearance: none
+
+ul,
+ol
+  list-style: none
+
+a
+  color: inherit
+  text-decoration: inherit
+
+hr
+  height: 0
+  color: inherit
+  border-top-width: 1px
+
+[hidden]
+  display: none !important

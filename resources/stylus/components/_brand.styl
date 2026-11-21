@@ -1,0 +1,38 @@
+// ==========================================================================
+// Brand (bloque: brand) — logo circular + "Giunti / Psychometrics"
+// ==========================================================================
+
+.brand
+  display: flex
+  align-items: center
+  gap: 10px
+  flex-shrink: 0
+
+  &__logo
+    flex-center()
+    flex-shrink: 0
+    square(32px)
+    border-radius: $radius-full
+    background-color: $color-navy
+    color: $color-white
+
+    +dark()
+      background-color: $color-mist
+      color: $color-night
+
+  .icon.brand__logo-icon
+    square(20px)
+
+  &__name
+    display: flex
+    flex-direction: column
+    line-height: 1.08
+
+  &__line
+    font-size: 15px
+    font-weight: $font-weight-bold
+    letter-spacing: $letter-spacing-tight
+    color: $color-navy
+
+    +dark()
+      color: $color-mist

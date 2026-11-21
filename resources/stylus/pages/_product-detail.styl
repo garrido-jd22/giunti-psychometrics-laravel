@@ -1,0 +1,261 @@
+// ==========================================================================
+// Detalle de producto (bloques: product-detail, info-row, purchase-card)
+// ==========================================================================
+
+// grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-8 lg:gap-10
+.product-detail
+  display: grid
+  grid-template-columns: minmax(0, 1fr)
+  align-items: start
+  gap: $space-8
+  margin-top: $space-6
+
+  +lg()
+    grid-template-columns: minmax(0, 1fr) 380px
+    gap: $space-10
+
+  &__main
+    min-width: 0
+
+  // h-60 sm:h-80 lg:h-[400px] rounded-[28px]
+  &__media
+    position: relative
+    width: 100%
+    height: 240px
+    overflow: hidden
+    border-radius: $radius-panel
+    background-color: rgba($color-navy, .1)
+
+    +sm()
+      height: 320px
+
+    +lg()
+      height: 400px
+
+  &__image
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  &__badges
+    display: flex
+    flex-wrap: wrap
+    gap: $space-2
+    margin-top: $space-6
+
+  &__badge
+    padding: $space-1 $space-3
+    border-radius: $radius-full
+    font-size: 13px
+    font-weight: $font-weight-semibold
+
+    &--type
+      background-color: $color-navy
+      color: $color-white
+
+      +dark()
+        background-color: $color-sky
+        color: $color-night
+
+    &--format
+      background-color: rgba($color-sky, .15)
+      text-accent()
+
+    &--category
+      font-weight: $font-weight-medium
+      background-color: rgba($color-white, .8)
+      text-ink(.75)
+
+      +dark()
+        background-color: rgba($color-surface-dark, .8)
+
+  &__title
+    margin-top: $space-4
+    font-size: 28px
+    font-weight: $font-weight-semibold
+    letter-spacing: $letter-spacing-tight
+    line-height: 1.12
+    text-ink()
+
+    +sm()
+      font-size: 36px
+
+    +lg()
+      font-size: 40px
+
+  &__description
+    margin-top: $space-4
+    font-size: 16px
+    line-height: $line-height-relaxed
+    text-ink(.75)
+
+    +sm()
+      font-size: 17px
+
+  &__subtitle
+    margin-top: $space-8
+    font-size: 18px
+    font-weight: $font-weight-semibold
+    text-ink()
+
+  &__info
+    display: grid
+    grid-template-columns: minmax(0, 1fr)
+    gap: $space-3
+    margin-top: $space-4
+
+    +sm()
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  &__author
+    display: inline-flex
+    align-items: center
+    gap: $space-2
+
+  // Columna de compra fija en desktop (lg:sticky lg:top-28)
+  &__aside
+    animation-delay(150ms)
+
+    +lg()
+      position: sticky
+      top: 112px
+
+// --------------------------------------------------------------------------
+// Fila de "Dettagli"
+// --------------------------------------------------------------------------
+.info-row
+  display: flex
+  align-items: flex-start
+  gap: $space-3
+  padding: $space-4
+  border-radius: $radius-2xl
+  background-color: rgba($color-white, .7)
+
+  +dark()
+    background-color: rgba($color-surface-dark, .7)
+
+  &__icon
+    flex-center()
+    flex-shrink: 0
+    square(40px)
+    border-radius: $radius-xl
+    background-color: rgba($color-sky, .12)
+    text-accent()
+
+    .icon
+      square(18px)
+
+  &__text
+    min-width: 0
+
+  &__label
+    font-size: 13px
+    text-ink(.55)
+
+  &__value
+    font-size: 15px
+    font-weight: $font-weight-semibold
+    text-ink()
+
+// --------------------------------------------------------------------------
+// Tarjeta de compra
+// --------------------------------------------------------------------------
+.purchase-card
+  padding: $space-6
+  border-radius: $radius-panel
+  glass-card(.85, .85)
+  box-shadow: $shadow-purchase
+
+  +sm()
+    padding: 28px
+
+  +dark()
+    box-shadow: $shadow-panel-dark
+
+  &__label
+    font-size: 14px
+    font-weight: $font-weight-medium
+    text-ink(.6)
+
+  &__prices
+    display: flex
+    flex-wrap: wrap
+    align-items: baseline
+    column-gap: $space-3
+    row-gap: $space-1
+    margin-top: $space-1
+
+  &__price
+    font-size: 34px
+    font-weight: $font-weight-bold
+    letter-spacing: $letter-spacing-tight
+    text-accent()
+
+  &__original
+    font-size: 16px
+    text-decoration: line-through
+    text-ink(.45)
+
+  &__discount
+    padding: 2px 10px
+    border-radius: $radius-full
+    background-color: $color-emerald-100
+    color: $color-emerald-700
+    font-size: 13px
+    font-weight: $font-weight-bold
+
+    +dark()
+      background-color: rgba($color-emerald-400, .15)
+      color: $color-emerald-300
+
+  &__tax
+    margin-top: $space-1
+    font-size: 13px
+    text-ink(.55)
+
+  &__action
+    margin-top: $space-6
+
+  &__perks
+    margin-top: $space-6
+    padding-top: $space-6
+    border-top: 1px solid rgba($color-navy, .1)
+
+    +dark()
+      border-top-color: rgba($color-mist, .1)
+
+    > * + *
+      margin-top: $space-3
+
+  &__perk
+    display: flex
+    align-items: center
+    gap: 10px
+    font-size: 14.5px
+    text-ink(.8)
+
+  .icon.purchase-card__perk-icon
+    square(18px)
+    color: $color-sky
+
+  &__back
+    display: inline-flex
+    align-items: center
+    gap: $space-2
+    margin-top: $space-6
+    font-size: 14.5px
+    font-weight: $font-weight-semibold
+    color: $color-navy
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      color: $color-sky
+
+      &:hover
+        color: $color-mist
+
+    .icon
+      square(16px)

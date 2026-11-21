@@ -1,0 +1,144 @@
+// ==========================================================================
+// Toasts (bloques: toaster, toast) — 6 variantes de color
+// ==========================================================================
+
+// fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-[420px]
+.toaster
+  position: fixed
+  top: $space-4
+  left: 50%
+  z-index: z('toast')
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 10px
+  width: calc(100% - 2rem)
+  max-width: 420px
+  transform: translateX(-50%)
+  pointer-events: none
+
+// Colores de una variante: contenedor, icono y barra de progreso (claro y oscuro)
+toast-variant($background, $text, $icon-background, $icon-color, $progress, $background-dark = null, $text-dark = null, $icon-background-dark = null, $icon-color-dark = null)
+  background-color: $background
+  color: $text
+
+  .toast__icon
+    background-color: $icon-background
+    color: $icon-color
+
+  .toast__progress
+    background-color: $progress
+
+  if $background-dark
+    +dark()
+      background-color: $background-dark
+      color: $text-dark
+
+      .toast__icon
+        background-color: $icon-background-dark
+        color: $icon-color-dark
+
+.toast
+  position: relative
+  display: flex
+  align-items: flex-start
+  gap: $space-3
+  width: 100%
+  padding: 14px 44px 14px 14px
+  overflow: hidden
+  border-radius: $radius-2xl
+  box-shadow: $shadow-toast
+  font-family: $font-family-base
+  pointer-events: auto
+  animation: toast-in 240ms $ease-toast both
+
+  +dark()
+    box-shadow: $shadow-toast-dark
+
+  +motion-reduce()
+    animation: none
+
+  &--closing
+    animation: toast-out 200ms ease-in both
+
+    +motion-reduce()
+      animation: none
+
+  &__icon
+    flex-center()
+    flex-shrink: 0
+    square(36px)
+    border-radius: $radius-xl
+
+    .icon
+      square(20px)
+
+  &__body
+    min-width: 0
+    padding-top: 2px
+
+  &__title
+    font-size: 15px
+    font-weight: $font-weight-semibold
+    line-height: $line-height-snug
+
+  &__description
+    margin-top: 2px
+    font-size: 14px
+    line-height: $line-height-snug
+    opacity: .8
+
+  &__close
+    position: absolute
+    top: $space-3
+    right: $space-3
+    flex-center()
+    square(28px)
+    border-radius: $radius-full
+    opacity: .6
+    transition: all $transition-base
+
+    &:hover
+      opacity: 1
+      background-color: rgba($color-black, .05)
+
+    +dark()
+      &:hover
+        background-color: rgba($color-white, .1)
+
+    .icon
+      square(16px)
+
+  // Barra que se vacía durante `duration` ms (se pausa con el ratón encima)
+  &__progress
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 2px
+    transform-origin: left
+    animation: toast-progress linear forwards
+
+    +motion-reduce()
+      display: none
+
+  &--paused &__progress
+    animation-play-state: paused
+
+  &--success
+    toast-variant($color-emerald-50, $color-emerald-950, rgba($color-emerald-500, .15), $color-emerald-600, rgba($color-emerald-500, .6), #0B2A22, $color-emerald-50, rgba($color-emerald-400, .15), $color-emerald-300)
+
+  &--error
+    toast-variant($color-red-50, $color-red-950, rgba($color-red-500, .15), $color-red-600, rgba($color-red-500, .6), #2D1216, $color-red-50, rgba($color-red-400, .15), $color-red-300)
+
+  &--warning
+    toast-variant($color-amber-50, $color-amber-950, rgba($color-amber-500, .2), $color-amber-600, rgba($color-amber-500, .6), #2B2010, $color-amber-50, rgba($color-amber-400, .15), $color-amber-300)
+
+  &--info
+    toast-variant($color-sky-50, $color-sky-950, rgba($color-sky-500, .15), $color-sky-600, rgba($color-sky-500, .6), #0C2233, $color-sky-50, rgba($color-sky-400, .15), $color-sky-300)
+
+  &--primary
+    toast-variant($color-navy, $color-white, rgba($color-white, .15), $color-white, rgba($color-white, .5))
+
+  &--secondary
+    toast-variant($color-slate-100, $color-slate-900, rgba($color-slate-500, .15), $color-slate-600, rgba($color-slate-500, .5), #1E293B, $color-slate-100, rgba($color-slate-400, .15), $color-slate-300)

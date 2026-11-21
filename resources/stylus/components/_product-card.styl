@@ -1,0 +1,297 @@
+// ==========================================================================
+// Card de producto (bloque: product-card) y grid (bloque: product-grid)
+// ==========================================================================
+
+// rounded-[24px] p-4 bg-white/80 backdrop-blur-md shadow + hover:shadow
+.product-card
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding: $space-4
+  border-radius: $radius-card
+  glass-card()
+  box-shadow: $shadow-card
+  transition: all $duration-base $ease-default
+
+  &:hover
+    box-shadow: $shadow-card-hover
+
+  +dark()
+    box-shadow: $shadow-card-dark
+
+    &:hover
+      box-shadow: $shadow-card-hover
+
+  // Imagen h-52 rounded-[18px] con zoom al pasar el ratón
+  &__media
+    position: relative
+    width: 100%
+    height: 208px
+    overflow: hidden
+    border-radius: $radius-card-image
+    background-color: rgba($color-navy, .1)
+
+  &__image
+    width: 100%
+    height: 100%
+    object-fit: cover
+    transition: transform $duration-slow $ease-default
+
+    ^[0]:hover &
+      transform: scale(1.05)
+
+  &__format
+    position: absolute
+    top: $space-3
+    left: $space-3
+    padding: 6px 14px
+    border-radius: $radius-full
+    glass($color-mist, .85)
+    box-shadow: $shadow-xs
+    color: $color-navy
+    font-size: 13px
+    font-weight: $font-weight-semibold
+
+    +dark()
+      background-color: rgba($color-night, .8)
+      color: $color-sky
+
+  // Guardar en preferiti (sin acción en el original)
+  &__bookmark
+    position: absolute
+    top: $space-3
+    right: $space-3
+    z-index: z('raised')
+    flex-center()
+    square(36px)
+    border-radius: $radius-2xl
+    glass($color-ink, .75)
+    color: $color-white
+    transition: $transition-colors
+
+    &:hover
+      background-color: $color-sky
+
+  &__price
+    position: absolute
+    right: $space-3
+    bottom: $space-3
+    display: flex
+    align-items: baseline
+    gap: $space-2
+    padding: 6px 14px
+    border-radius: $radius-2xl
+    glass($color-white, .9)
+    box-shadow: $shadow-sm
+
+    +dark()
+      background-color: rgba($color-night, .85)
+
+  &__price-original
+    font-size: 13px
+    text-decoration: line-through
+    color: rgba($color-ink, .5)
+
+    +dark()
+      color: rgba($color-mist, .45)
+
+  &__price-current
+    font-size: 16px
+    font-weight: $font-weight-bold
+    text-accent()
+
+  &__body
+    padding: $space-5 6px 0
+
+  &__title
+    line-clamp(2)
+    font-size: 19px
+    font-weight: $font-weight-bold
+    line-height: $line-height-snug
+    color: $color-ink
+    transition: $transition-colors
+
+    ^[0]:hover &
+      color: $color-navy
+
+    +dark()
+      color: $color-mist
+
+  // El ::after cubre la tarjeta entera: toda la card es clicable
+  &__link
+    &::after
+      content: ''
+      position: absolute
+      inset: 0
+      border-radius: $radius-card
+
+    &:focus
+      outline: none
+
+    &:focus-visible::after
+      ring($color-sky)
+
+  &__description
+    line-clamp(2)
+    margin-top: $space-2
+    font-size: 14.5px
+    line-height: $line-height-relaxed
+    text-ink(.7)
+
+  &__meta
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: $space-2
+    margin-top: $space-4
+    font-size: 14px
+    font-weight: $font-weight-medium
+    text-ink(.85)
+
+  &__chip
+    display: inline-flex
+    align-items: center
+    gap: 6px
+    padding: $space-1 $space-3
+    border-radius: $radius-full
+    background-color: $color-mist
+
+    +dark()
+      background-color: rgba($color-night, .7)
+
+  .icon.product-card__chip-icon
+    square(14px)
+    color: $color-sky
+
+  &__footer
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: $space-3
+    margin-top: $space-5
+    padding: $space-5 6px 0
+
+  &__author
+    display: flex
+    align-items: center
+    gap: 10px
+    min-width: 0
+
+  &__author-text
+    min-width: 0
+
+  &__author-name
+    truncate()
+    font-size: 14px
+    font-weight: $font-weight-semibold
+    text-ink()
+
+  &__author-role
+    font-size: 12.5px
+    text-ink(.55)
+
+  // Por encima del ::after del enlace
+  &__action
+    position: relative
+    z-index: z('raised')
+
+  // ------------------------------------------------------------------------
+  // Skeleton: misma forma, sin blur ni hover
+  // ------------------------------------------------------------------------
+  &--skeleton
+    background-color: rgba($color-white, .8)
+    -webkit-backdrop-filter: none
+    backdrop-filter: none
+
+    &:hover
+      box-shadow: $shadow-card
+
+    +dark()
+      &:hover
+        box-shadow: $shadow-card-dark
+
+  &--skeleton &__media
+    border-radius: $radius-card-image
+
+  &__skeleton-line
+    &--title
+      height: 20px
+      width: 91.666%
+
+    &--title-short
+      height: 20px
+      width: 66.666%
+      margin-top: $space-2
+
+    &--text
+      height: 14px
+      width: 100%
+      margin-top: $space-4
+
+    &--text-short
+      height: 14px
+      width: 80%
+      margin-top: $space-2
+
+    &--chip
+      height: 28px
+      width: 128px
+      margin-top: $space-4
+
+    &--name
+      height: 14px
+      width: 96px
+
+    &--role
+      height: 12px
+      width: 64px
+      margin-top: 6px
+
+  &__skeleton-avatar
+    square(32px)
+
+  &__skeleton-action
+    height: 40px
+    width: 144px
+
+// group-hover del título en oscuro (dark:group-hover:text-[#0EA5E9])
+html.dark .product-card:hover .product-card__title
+  color: $color-sky
+
+// --------------------------------------------------------------------------
+// Grid: 1 / md:2 / lg:3 columnas, gap-5 sm:gap-7
+// --------------------------------------------------------------------------
+.product-grid
+  display: grid
+  grid-template-columns: minmax(0, 1fr)
+  gap: $space-5
+
+  +sm()
+    gap: 28px
+
+  +md()
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  +lg()
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+  &__item
+    display: grid
+
+  &--empty
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: $space-3
+    padding-block: $space-20
+    text-align: center
+    text-ink(.7)
+
+  .icon.product-grid__empty-icon
+    square(32px)
+    color: $color-sky
+
+  &__empty-text
+    font-size: 15.5px

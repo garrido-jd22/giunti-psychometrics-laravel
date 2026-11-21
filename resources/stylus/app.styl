@@ -1,0 +1,41 @@
+// ==========================================================================
+// Punto de entrada de estilos
+// El orden importa: abstracts no genera CSS, el resto sí.
+// ==========================================================================
+
+// Abstracts
+@import 'abstracts/_variables'
+@import 'abstracts/_functions'
+@import 'abstracts/_mixins'
+
+// Base
+@import 'base/_fonts'
+@import 'base/_reset'
+@import 'base/_typography'
+@import 'base/_global'
+@import 'base/_animations'
+
+// Components (los de layout y páginas pueden sobrescribirlos)
+@import 'components/_icon'
+@import 'components/_buttons'
+@import 'components/_brand'
+@import 'components/_select'
+@import 'components/_forms'
+@import 'components/_product-card'
+@import 'components/_product-filters'
+@import 'components/_cart'
+@import 'components/_toast'
+
+// Layout
+@import 'layout/_container'
+@import 'layout/_header'
+@import 'layout/_footer'
+@import 'layout/_page'
+
+// Pages
+@import 'pages/_home'
+@import 'pages/_product-detail'
+@import 'pages/_resources'
+
+// Utilities (siempre al final)
+@import 'utilities/_helpers'

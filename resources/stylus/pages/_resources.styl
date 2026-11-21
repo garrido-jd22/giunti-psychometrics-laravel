@@ -1,0 +1,163 @@
+// ==========================================================================
+// Risorse (bloque: resources) — página "en construcción"
+// ==========================================================================
+
+// min-h-[520px] px-6 py-20 overflow-hidden
+.resources
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  min-height: 520px
+  padding: $space-20 $space-6
+  overflow: hidden
+  surface-section()
+
+  // Halo difuminado detrás de la tarjeta
+  &__glow
+    position: absolute
+    top: -96px
+    left: 50%
+    width: 540px
+    height: 280px
+    border-radius: $radius-full
+    background-color: rgba($color-sky, .15)
+    filter: blur(64px)
+    transform: translateX(-50%)
+    pointer-events: none
+
+    +dark()
+      background-color: rgba($color-sky, .2)
+
+  &__card
+    position: relative
+    z-index: z('raised')
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    max-width: 780px
+    margin-inline: auto
+    padding: $space-8
+    border-radius: $radius-panel
+    text-align: center
+    glass-card(.8, .85)
+    box-shadow: $shadow-resources
+
+    +sm()
+      padding: $space-12
+
+    +dark()
+      box-shadow: $shadow-resources-dark
+
+  &__badge
+    display: inline-flex
+    align-items: center
+    gap: $space-2
+    margin-bottom: $space-6
+    padding: 6px $space-4
+    border-radius: $radius-full
+    background-color: rgba($color-sky, .15)
+    font-size: 12.5px
+    font-weight: $font-weight-semibold
+    text-accent()
+
+    +dark()
+      background-color: rgba($color-sky, .2)
+
+    .icon
+      square(14px)
+
+  // text-3xl sm:text-5xl tracking-[-0.03em] leading-[1.12]
+  &__title
+    font-size: 30px
+    font-weight: $font-weight-semibold
+    letter-spacing: $letter-spacing-tighter
+    line-height: 1.12
+    text-ink()
+
+    +sm()
+      font-size: 48px
+
+  &__highlight
+    text-accent()
+
+  &__text
+    max-width: 540px
+    margin-top: $space-4
+    font-size: 14.5px
+    line-height: 1.65
+    text-ink(.75)
+
+    +sm()
+      font-size: 15.5px
+
+  &__progress
+    width: 100%
+    max-width: 440px
+    margin-top: $space-8
+
+  &__progress-labels
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: $space-2
+    font-size: 12px
+    font-weight: $font-weight-semibold
+    text-accent()
+
+  &__progress-track
+    width: 100%
+    height: 10px
+    overflow: hidden
+    border-radius: $radius-full
+    background-color: rgba($color-navy, .1)
+
+    +dark()
+      background-color: rgba($color-night, .8)
+
+  &__progress-bar
+    width: 75%
+    height: 100%
+    border-radius: $radius-full
+    background-color: $color-navy
+    transition: all $duration-slow $ease-default
+
+    +dark()
+      background-color: $color-sky
+
+  &__actions
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    gap: $space-4
+    margin-top: 36px
+
+  &__home
+    font-size: 13.5px
+
+  &__contact
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    height: 44px
+    padding-inline: $space-6
+    border-radius: $radius-full
+    background-color: rgba($color-white, .8)
+    color: $color-ink
+    font-size: 13.5px
+    font-weight: $font-weight-semibold
+    box-shadow: $shadow-xs
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+    +dark()
+      background-color: rgba($color-night, .7)
+      color: $color-mist
+
+      &:hover
+        color: $color-sky

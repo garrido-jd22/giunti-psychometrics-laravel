@@ -1,0 +1,204 @@
+// ==========================================================================
+// Página interior (bloque: page), breadcrumb, "Prodotto non trovato" y 404
+// ==========================================================================
+
+// min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6
+.page
+  width: 100%
+  min-height: 100vh
+  padding: 112px $container-gutter $space-16
+  surface-section()
+
+  +sm()
+    padding: 128px $container-gutter-sm $space-20
+
+  // flex-col gap-5 md:flex-row md:items-end md:justify-between pb-5 border-b
+  &__header
+    display: flex
+    flex-direction: column
+    gap: $space-5
+    padding-bottom: $space-5
+    border-bottom: 1px solid rgba($color-navy, .15)
+
+    +md()
+      flex-direction: row
+      align-items: flex-end
+      justify-content: space-between
+
+    +dark()
+      border-bottom-color: rgba($color-mist, .15)
+
+  &__title
+    font-size: 26px
+    font-weight: $font-weight-semibold
+    letter-spacing: $letter-spacing-tight
+    line-height: 1.25
+    text-ink()
+
+    +sm()
+      font-size: 30px
+
+    +lg()
+      font-size: 34px
+
+  &__subtitle
+    margin-top: 6px
+    font-size: 15px
+    text-ink(.65)
+
+  &__actions
+    width: 100%
+    animation-delay(120ms)
+
+    +sm()
+      width: auto
+
+// --------------------------------------------------------------------------
+// Breadcrumb del detalle
+// --------------------------------------------------------------------------
+.breadcrumb
+  &__list
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 6px
+    font-size: 14px
+    text-ink(.6)
+
+  &__item
+    display: flex
+    align-items: center
+    gap: 6px
+
+    &--current
+      min-width: 0
+      font-weight: $font-weight-medium
+      text-ink()
+
+      .breadcrumb__separator
+        flex-shrink: 0
+        text-ink(.6)
+
+  .icon.breadcrumb__separator
+    square(14px)
+
+  &__link
+    transition: $transition-colors
+
+    &:hover
+      color: $color-sky
+
+  &__current
+    line-clamp(1)
+
+// --------------------------------------------------------------------------
+// Producto no encontrado: min-h-[70vh] pt-32 pb-20, centrado
+// --------------------------------------------------------------------------
+.not-found
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: $space-4
+  width: 100%
+  min-height: 70vh
+  padding: 128px $container-gutter $space-20
+  text-align: center
+  surface-section()
+
+  +sm()
+    padding-inline: $container-gutter-sm
+
+  .icon.not-found__icon
+    square(40px)
+    color: $color-sky
+
+  &__title
+    font-size: 26px
+    font-weight: $font-weight-semibold
+    letter-spacing: $letter-spacing-tight
+
+  &__text
+    font-size: 15.5px
+    text-ink(.65)
+
+  &__button
+    height: 44px
+    margin-top: $space-2
+    padding-inline: $space-6
+    font-size: 15px
+
+// --------------------------------------------------------------------------
+// 404 global (sin header ni footer; sin variante oscura, como el original)
+// --------------------------------------------------------------------------
+.error-page
+  display: flex
+  align-items: center
+  width: 100vw
+  height: 100vh
+  background-color: $color-gray-100
+
+  // Clase `container` de Tailwind: ancho máximo por breakpoint, sin centrar
+  &__container
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    width: 100%
+    padding-inline: $space-5
+    color: $color-gray-700
+
+    +sm()
+      max-width: $bp-sm
+
+    +md()
+      flex-direction: row
+      max-width: $bp-md
+
+    +lg()
+      max-width: $bp-lg
+
+    +xl()
+      max-width: $bp-xl
+
+    @media (min-width: 1536px)
+      max-width: 1536px
+
+  &__content
+    max-width: 448px
+
+  &__code
+    margin-bottom: $space-5
+    font-size: 48px
+    line-height: 1
+    font-weight: $font-weight-bold
+
+  &__title
+    margin-bottom: $space-3
+    font-size: 24px
+    font-weight: $font-weight-light
+    line-height: $line-height-base
+
+    +md()
+      font-size: 30px
+
+  &__text
+    margin-bottom: $space-8
+
+  // h-11 px-7 rounded-[6px] text-[15.5px] shadow-sm
+  &__button
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    height: 44px
+    padding-inline: 28px
+    border-radius: $radius-md
+    background-color: $color-navy
+    color: $color-mist
+    font-size: 15.5px
+    font-weight: $font-weight-medium
+    box-shadow: $shadow-sm
+    transition: $transition-colors
+
+    &:hover
+      background-color: $color-sky

@@ -1,0 +1,149 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Media queries (mobile first, mismos cortes que Tailwind)
+// Uso:
+//   .block
+//     +md()
+//       padding: 0
+// --------------------------------------------------------------------------
+sm()
+  @media (min-width: $bp-sm)
+    {block}
+
+md()
+  @media (min-width: $bp-md)
+    {block}
+
+lg()
+  @media (min-width: $bp-lg)
+    {block}
+
+xl()
+  @media (min-width: $bp-xl)
+    {block}
+
+// Alias semánticos: tablet = md (768px), desktop = xl (1280px)
+tablet()
+  @media (min-width: $bp-tablet)
+    {block}
+
+desktop()
+  @media (min-width: $bp-desktop)
+    {block}
+
+mobile-only()
+  @media (max-width: ($bp-tablet - 1))
+    {block}
+
+// --------------------------------------------------------------------------
+// Tema oscuro: equivale a la variante `dark:` (clase .dark en <html>)
+// Uso:
+//   .card
+//     background: $color-white
+//     +dark()
+//       background: $color-surface-dark
+// --------------------------------------------------------------------------
+dark()
+  html.dark &
+    {block}
+
+// --------------------------------------------------------------------------
+// Colores de texto con su pareja en tema oscuro
+// --------------------------------------------------------------------------
+
+// text-[#0F2D52]/α dark:text-[#EFF6FF]/α
+text-ink($alpha = 1)
+  color: rgba($color-ink, $alpha)
+  +dark()
+    color: rgba($color-mist, $alpha)
+
+// text-[#1B4F8A] dark:text-[#0EA5E9]
+text-accent()
+  color: $color-navy
+  +dark()
+    color: $color-sky
+
+// Fondo y texto de sección: bg-[#EFF6FF] dark:bg-[#091526] + transition-colors duration-300
+surface-section()
+  background-color: $color-mist
+  color: $color-ink
+  transition: background-color $duration-base $ease-default, color $duration-base $ease-default
+  +dark()
+    background-color: $color-night
+    color: $color-mist
+
+// Tarjeta translúcida: bg-white/α dark:bg-[#11223A]/β backdrop-blur-md
+glass-card($alpha = .8, $alpha-dark = .85)
+  glass($color-white, $alpha)
+  +dark()
+    background-color: rgba($color-surface-dark, $alpha-dark)
+
+// Tamaño cuadrado (w-N h-N)
+square($size)
+  width: $size
+  height: $size
+
+// --------------------------------------------------------------------------
+// Animaciones solo si el usuario no pidió reducir movimiento (motion-safe:)
+// --------------------------------------------------------------------------
+motion-safe()
+  @media (prefers-reduced-motion: no-preference)
+    {block}
+
+motion-reduce()
+  @media (prefers-reduced-motion: reduce)
+    {block}
+
+// --------------------------------------------------------------------------
+// Utilidades de maquetación
+// --------------------------------------------------------------------------
+
+// Centrado con flexbox
+flex-center()
+  display: flex
+  align-items: center
+  justify-content: center
+
+// Texto truncado con puntos suspensivos
+truncate()
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+// Limita el texto a N líneas (line-clamp-N)
+line-clamp($lines)
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $lines
+  line-clamp: $lines
+  overflow: hidden
+
+// Oculta visualmente pero mantiene accesible para lectores de pantalla
+visually-hidden()
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border: 0
+
+// Superficie translúcida con desenfoque (bg-*/xx backdrop-blur-md)
+glass($color, $alpha, $blur = 12px)
+  background-color: rgba($color, $alpha)
+  -webkit-backdrop-filter: blur($blur)
+  backdrop-filter: blur($blur)
+
+// Anillo de foco (ring-2 ring-*)
+ring($color, $width = 2px)
+  box-shadow: 0 0 0 $width $color
+
+// Retraso de animación de entrada ([animation-delay:Xms])
+animation-delay($ms)
+  +motion-safe()
+    animation-delay: $ms
