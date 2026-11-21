@@ -1,0 +1,32 @@
+// ==========================================================================
+// Loadable (bloque: loadable) — carga simulada con skeleton
+// Estados:
+//   - Inicial con JS (html.js sin --ready): skeleton visible, igual que la
+//     "consulta inicial" de 800 ms del original. Sin JS se ve el contenido.
+//   - --loading: búsqueda aplicada, se muestra el skeleton.
+//   - --typing: el usuario sigue escribiendo, resultados atenuados.
+// ==========================================================================
+
+.loadable
+  &__skeleton,
+  &__loading-text
+    display: none
+
+  &__content
+    transition: opacity $transition-base
+
+  &--typing &__content
+    opacity: .6
+
+// Mientras carga: skeleton y "Ricerca in corso…" en lugar del contenido
+html.js .loadable:not(.loadable--ready),
+.loadable--loading
+  .loadable__skeleton
+    display: block
+
+  .loadable__loading-text
+    display: inline
+
+  .loadable__content,
+  .loadable__ready-text
+    display: none

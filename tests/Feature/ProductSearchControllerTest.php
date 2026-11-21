@@ -8,6 +8,18 @@ it('finds products by title ignoring accents and case', function () {
         ->assertJsonPath('results.0.url', route('products.show', 'test-abilita-cognitive'));
 });
 
+it('renders the results list for the header popover', function () {
+    $html = $this->getJson(route('products.search', ['q' => 'scala']))->json('html');
+
+    expect($html)->toContain('href="'.route('products.show', 'scala-umore').'"')
+        ->toContain('data-add-to-cart="scala-umore"');
+});
+
+it('renders the empty state when nothing matches', function () {
+    expect($this->getJson(route('products.search', ['q' => 'zzz']))->json('html'))
+        ->toContain('Nessun prodotto trovato.');
+});
+
 it('limits the results to the header limit', function () {
     config(['products.search.header_limit' => 2]);
 

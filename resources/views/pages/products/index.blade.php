@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', $type->label().' · Catalogo Prodotti')
+@section('title', $title)
 
 @section('page-title', 'Catalogo Prodotti')
 @section('page-subtitle', 'Test psicometrici e percorsi di formazione per professionisti.')

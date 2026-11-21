@@ -3,7 +3,26 @@
 it('starts with an empty cart', function () {
     $this->getJson(route('cart.show'))
         ->assertOk()
-        ->assertExactJson(['count' => 0, 'total' => "0,00\u{00A0}€"]);
+        ->assertJsonPath('count', 0)
+        ->assertJsonPath('badge', '0')
+        ->assertJsonPath('label', 'Carrello')
+        ->assertJsonPath('total', "0,00\u{00A0}€")
+        ->assertJson(fn ($json) => $json->where('html', fn (string $html): bool => str_contains($html, 'Il carrello è vuoto'))->etc());
+});
+
+it('renders the drawer lines and the accessible label after adding a product', function () {
+    $response = $this->postJson(route('cart.items.store'), ['slug' => 'scala-umore'])->assertCreated();
+
+    expect($response->json('label'))->toBe('Carrello, 1 prodotti')
+        ->and($response->json('html'))->toContain('Scala dell&#039;Umore')
+        ->toContain('data-cart-remove="scala-umore"')
+        ->toContain("140,00\u{00A0}€");
+});
+
+it('caps the badge at 99+', function () {
+    $this->withSession(['cart' => ['scala-umore' => 120]])
+        ->getJson(route('cart.show'))
+        ->assertJsonPath('badge', '99+');
 });
 
 it('adds a product and accumulates the quantity when added again', function () {

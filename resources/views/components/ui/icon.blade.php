@@ -1,6 +1,6 @@
 {{--
     Icono SVG (trazos de lucide, licencia ISC) guardado en resources/views/icons/{name}.blade.php.
-    Uso: <x-ui.icon name="search" class="header__search-icon" :stroke-width="1.8" />
+    Uso: <x-ui.icon name="search" class="bloque__elemento" :stroke-width="1.8" />
     Decorativo por defecto (aria-hidden); pasa aria-label y role="img" si transmite información.
 --}}
 @props([
@@ -16,7 +16,7 @@
     stroke-width="{{ $strokeWidth }}"
     stroke-linecap="round"
     stroke-linejoin="round"
-    {{ $attributes->merge(['class' => 'icon icon--'.$name, 'aria-hidden' => 'true', 'focusable' => 'false']) }}
+    {{ $attributes->merge(['class' => 'icon', 'aria-hidden' => 'true', 'focusable' => 'false']) }}
 >
     @include('icons.'.$name)
 </svg>

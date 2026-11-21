@@ -13,12 +13,14 @@
         {{-- Aplica el tema guardado (o el del sistema) antes del primer pintado para evitar el parpadeo. --}}
         <script>
             (function () {
+                var root = document.documentElement;
+                {{-- Con JS activo los bloques .loadable arrancan mostrando su skeleton (sin parpadeo). --}}
+                root.classList.add('js');
                 try {
                     var theme = localStorage.getItem('theme');
                     if (theme !== 'light' && theme !== 'dark') {
                         theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                     }
-                    var root = document.documentElement;
                     root.classList.toggle('dark', theme === 'dark');
                     root.style.colorScheme = theme;
                 } catch (error) {}
@@ -29,7 +31,7 @@
 
         @stack('styles')
     </head>
-    <body class="body @yield('body-class')">
+    <body class="body @yield('body-class')" data-search-timing='@json(config('products.search'))'>
         @hasSection('bare')
             @yield('content')
         @else

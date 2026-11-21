@@ -12,8 +12,14 @@
             </a>
         </div>
 
-        <div data-initial-loading="{{ $featuredProducts->count() }}">
-            <x-product.grid :products="$featuredProducts" />
+        {{-- Carga simulada inicial: skeleton y después las cards (resources/js/modules/loadable.js) --}}
+        <div class="loadable" data-loadable>
+            <div class="loadable__skeleton">
+                <x-product.grid :products="$featuredProducts" loading :skeleton-count="$featuredProducts->count()" />
+            </div>
+            <div class="loadable__content">
+                <x-product.grid :products="$featuredProducts" />
+            </div>
         </div>
     </div>
 </section>

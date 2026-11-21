@@ -53,6 +53,30 @@ describe('index', function () {
             ->assertViewHas('filters', fn ($filters): bool => $filters->format === null)
             ->assertViewHas('products', fn ($products): bool => $products->count() === 5);
     });
+
+    it('returns the filtered results as rendered html for ajax requests', function () {
+        $response = $this->getJson(route('products.index', [
+            'type' => 'course',
+            'category' => ProductCategory::ScuolaEtaEvolutiva->value,
+        ]));
+
+        $response->assertOk()
+            ->assertJsonPath('title', 'Formazione · Catalogo Prodotti')
+            ->assertJsonPath('status', '2 di 5 corsi')
+            ->assertJsonPath('hasActiveFilters', true);
+
+        expect($response->json('results'))
+            ->toContain('data-product-slug="corso-test-a-scuola"')
+            ->toContain('data-product-slug="corso-sviluppo-infantile"')
+            ->not->toContain('data-product-slug="corso-valutazione-clinica"')
+            ->and($response->json('catalog'))->toContain('data-type="course"');
+    });
+
+    it('returns the empty state when no product matches', function () {
+        $this->getJson(route('products.index', ['type' => 'test', 'search' => 'nessuna corrispondenza']))
+            ->assertJsonPath('status', '0 di 5 test')
+            ->assertJson(fn ($json) => $json->where('results', fn (string $html): bool => str_contains($html, 'Nessun prodotto corrisponde ai filtri selezionati.'))->etc());
+    });
 });
 
 describe('show', function () {

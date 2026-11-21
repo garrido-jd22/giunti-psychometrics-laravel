@@ -20,7 +20,7 @@
 @else
     <div class="product-grid">
         @foreach ($products as $product)
-            <div class="product-grid__item u-animate-fade-up" style="animation-delay: {{ $loop->index * 80 }}ms">
+            <div class="product-grid__item u-animate-fade-up" style="animation-delay: {{ $loop->index * 80 }}ms" data-product-slug="{{ $product->slug }}">
                 <x-product.card :product="$product" />
             </div>
         @endforeach

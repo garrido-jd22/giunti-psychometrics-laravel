@@ -25,4 +25,20 @@ final readonly class CartSummary
     {
         return $this->lines === [];
     }
+
+    /**
+     * Texto del contador del icono (máximo "99+").
+     */
+    public function badge(): string
+    {
+        return $this->count > 99 ? '99+' : (string) $this->count;
+    }
+
+    /**
+     * Etiqueta accesible del botón del carrito.
+     */
+    public function buttonLabel(): string
+    {
+        return $this->count > 0 ? "Carrello, {$this->count} prodotti" : 'Carrello';
+    }
 }

@@ -7,6 +7,7 @@ use App\Services\ProductService;
 use App\Support\Formatter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 
 class CartController extends Controller
 {
@@ -46,13 +47,19 @@ class CartController extends Controller
         return $this->cartResponse();
     }
 
+    /**
+     * Estado del carrito con el contenido del panel ya renderizado por Blade.
+     */
     private function cartResponse(int $status = 200): JsonResponse
     {
         $summary = $this->cart->summary();
 
         return response()->json([
             'count' => $summary->count,
+            'badge' => $summary->badge(),
+            'label' => $summary->buttonLabel(),
             'total' => Formatter::euro($summary->total),
+            'html' => Blade::render('<x-cart.drawer-content :cart="$cart" />', ['cart' => $summary]),
         ], $status);
     }
 }
