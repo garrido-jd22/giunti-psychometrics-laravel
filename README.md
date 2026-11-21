@@ -10,9 +10,9 @@ La interfaz está en italiano.
 
 ## Requisitos
 
-- **PHP 8.3** o superior, con las extensiones `pdo_sqlite` y `mbstring`. No hace falta `intl`: los formatos de precio y fecha se calculan en PHP.
+- **PHP 8.4** o superior, con las extensiones `pdo_sqlite` y `mbstring`. No hace falta `intl`: los formatos de precio y fecha se calculan en PHP.
 - **Composer**.
-- **Node.js 20.19** o superior (o 22.12+), que es lo que pide Vite 8.
+- **Node.js 24** (la versión exacta está en `mise.toml`, que también usa Railway). Vite 8 funciona desde Node 20.19 o 22.12.
 - **npm** (incluido con Node).
 - **Git**.
 
@@ -75,9 +75,75 @@ php artisan serve
 
 > Si `npm run dev` está apagado y aparece el error *"Unable to locate file in Vite manifest"*, ejecuta `npm run build` (o vuelve a arrancar `npm run dev`).
 
+> La web se abre en [http://localhost:8000](http://localhost:8000) (Laravel), **no** en `localhost:5173`: esa dirección es el servidor de Vite y solo muestra una página de aviso.
+
+---
+
+## Despliegue en Railway
+
+Railway despliega automáticamente cada `git push` a la rama conectada: instala las dependencias, ejecuta `npm run build` y arranca la aplicación.
+
+### Variables de entorno
+
+En el servicio → pestaña **Variables**:
+
+| Variable | Valor | Por qué |
+|---|---|---|
+| `APP_KEY` | `base64:...` | Obligatoria. Cifra la sesión y las cookies. |
+| `APP_ENV` | `production` | |
+| `APP_DEBUG` | `false` | Activarla solo un momento para ver un error en pantalla. |
+| `APP_URL` | `https://<tu-dominio>.up.railway.app` | Debe empezar por `https://`. |
+| `SESSION_DRIVER` | `cookie` | Railway no tiene la base de datos SQLite (ver abajo). |
+| `CACHE_STORE` | `file` | Mismo motivo. |
+| `QUEUE_CONNECTION` | `sync` | Mismo motivo; no hay worker de colas. |
+
+La `APP_KEY` se genera en local con el siguiente comando, que solo la muestra y no modifica tu `.env`:
+
+```bash
+php artisan key:generate --show
+```
+
+Usa una clave distinta de la de tu `.env` local y no la subas al repositorio. Si se cambia, las sesiones abiertas (y los carritos) se pierden.
+
+### Por qué no se usa la base de datos en producción
+
+La aplicación no guarda nada en base de datos: los productos salen de `config/catalog.php` y el carrito vive en la sesión. En local la sesión se guarda en SQLite, pero `database/database.sqlite` está en `.gitignore` y no llega a Railway. Con `SESSION_DRIVER=database` cada visita falla con **500 Internal Server Error** (`Database file at path [...] does not exist`).
+
+Con `SESSION_DRIVER=cookie`, la sesión va cifrada en una cookie del navegador: no necesita base de datos y sobrevive a los redespliegues. El carrito solo guarda `slug => cantidad`, así que cabe de sobra.
+
+### HTTPS detrás del proxy
+
+Railway recibe las visitas por HTTPS y las reenvía a Laravel por HTTP. Para que Laravel genere las URLs de CSS, JS e imágenes con `https://`, `bootstrap/app.php` confía en el proxy:
+
+```php
+$middleware->trustProxies(at: '*');
+```
+
+Sin esa línea, el navegador bloquea los assets por **contenido mixto** y la página se ve sin estilos. El test `tests/Feature/TrustProxiesTest.php` comprueba que se mantenga.
+
+### Si algo falla
+
+| Síntoma | Causa probable |
+|---|---|
+| 500 en todas las páginas | Falta `APP_KEY`, o `SESSION_DRIVER` / `CACHE_STORE` siguen en `database`. |
+| La página carga sin estilos | Consola del navegador (F12): *Mixed Content* → falta el cambio de `trustProxies` en el despliegue; `.css` con 404 → el build no ejecutó `npm run build`. |
+| *Vite manifest not found* | El build no generó `public/build`. Revisa los **Build Logs** de Railway. |
+
+Para cualquier otro error, revisa los **Deploy Logs** del servicio o activa `APP_DEBUG=true` un momento.
+
 ---
 
 ## Versiones
+
+### v0.1.1
+
+#### Despliegue en Railway
+
+- **Sesión y caché sin base de datos en producción:** `SESSION_DRIVER=cookie` y `CACHE_STORE=file` evitan el 500 por la falta del archivo SQLite.
+- **HTTPS detrás del proxy:** `trustProxies(at: '*')` en `bootstrap/app.php`, para que los assets carguen con `https://`.
+- **Requisitos actualizados:** PHP 8.4 y Node 24 (`mise.toml`).
+- **Favicon:** el logotipo (`public/images/Logotip.png`) aparece en la pestaña del navegador.
+- **Comentarios del código** resumidos: sin equivalencias de Tailwind ni banners decorativos.
 
 ### v0.1.0
 
@@ -257,7 +323,7 @@ Cada funcionalidad es un módulo en `resources/js/modules/`. Cada módulo compru
 - **Añadir:** desde la card, desde el buscador o desde el detalle, con un toast de confirmación.
 - **Panel lateral:** sale por la derecha y muestra los productos, las cantidades, el número de artículos y el total. Desde ahí se puede eliminar cada producto.
   - Al abrirse, lleva el foco al botón de cerrar, bloquea el scroll y se cierra con Esc o al pulsar fuera.
-- **Persistencia:** el carrito se guarda en la **sesión de Laravel** (`CartService`). Sobrevive a una recarga y se actualiza al volver a la pestaña si se modificó en otra.
+- **Persistencia:** el carrito se guarda en la **sesión de Laravel** (`CartService`): en SQLite en local y en una cookie cifrada en producción. Sobrevive a una recarga y se actualiza al volver a la pestaña si se modificó en otra.
 
 #### Formulario de contacto
 
