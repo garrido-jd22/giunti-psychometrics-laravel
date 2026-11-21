@@ -15,6 +15,6 @@
 >
     <x-ui.icon name="shopping-cart" :stroke-width="$isIcon ? 1.8 : 2" />
     @unless ($isIcon)
-        Aggiungi al carrello
+        Aggiungere
     @endunless
 </button>

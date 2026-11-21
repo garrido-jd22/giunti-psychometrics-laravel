@@ -10,6 +10,9 @@
 
         <title>@yield('title', config('site.name'))</title>
 
+        <link rel="icon" type="image/png" href="{{ asset('images/Logotip.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/Logotip.png') }}">
+
         {{-- Aplica el tema antes del primer pintado para evitar el parpadeo. --}}
         <script>
             (function () {

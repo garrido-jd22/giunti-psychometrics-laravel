@@ -16,10 +16,10 @@
             <span class="hero__badge-text">10k+ professionisti</span>
         </div>
 
-        <h1 class="hero__title u-animate-fade-down">MCMI-IV: Millon Clinical Multiaxial Inventory-IV</h1>
+        <h1 class="hero__title u-animate-fade-down">Inventario di Valutazione Clinica e della Personalità</h1>
 
         <p class="hero__subtitle u-animate-fade-up">
-            Disponibile la nuova edizione del questionario per la valutazione clinica della personalità e della psicopatologia negli adulti
+            Disponibile la nuova edizione del questionario per la valutazione clinica della personalità e della psicopatologia negli adulti.
         </p>
 
         <div class="hero__cta u-animate-fade-up">
